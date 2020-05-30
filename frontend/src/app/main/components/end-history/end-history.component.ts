@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EndStoryData } from 'src/app/shared/models/end-story-data.model';
 
 @Component({
   selector: 'aequi-end-history',
@@ -9,17 +10,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class EndHistoryComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<EndHistoryComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Data) {
+    @Inject(MAT_DIALOG_DATA) public data: EndStoryData) {
 
   }
 
   ngOnInit(): void {
   }
 
-}
-
-class Data {
-  emoji: string;
-  color: string;
-  message: string;
+  close() {
+    this.dialogRef.close();
+  }
 }
