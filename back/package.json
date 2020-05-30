@@ -1,0 +1,36 @@
+{
+    "name": "aequichat-rest-api",
+    "version": "1.0.0",
+    "description": "Api rest server for the Aequichat app",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon index.js",
+        "lint": "eslint index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/SigmaGlobhack/app.git"
+    },
+    "keywords": [
+        "API",
+        "rest",
+        "server",
+        "Aequichat"
+    ],
+    "author": "SIGMA",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/SigmaGlobhack/app/issues"
+    },
+    "homepage": "https://github.com/SigmaGlobhack/app#readme",
+    "devDependencies": {
+        "eslint": "^7.1.0",
+        "nodemon": "^2.0.4"
+    },
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "mongoose": "^5.9.16"
+    }
+}
