@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,9 +16,10 @@ import { IntroductionComponent } from './pages/introduction/introduction.compone
 import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
 import { TimeTransitionComponent } from './components/time-transition/time-transition.component';
-
+import { EndHistoryComponent } from './components/end-history/end-history.component';
+import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end-history-wrapper.component';
 @NgModule({
-  declarations: [LoginComponent, StoryCardComponent, StoriesComponent, ChatTemplateComponent, ChatComponent, IntroductionComponent, TimeTransitionComponent],
+  declarations: [LoginComponent, StoryCardComponent, StoriesComponent, ChatTemplateComponent, ChatComponent, IntroductionComponent, TimeTransitionComponent, EndHistoryComponent, EndHistoryWrapperComponent],
   imports: [
     MatSidenavModule,
     MatToolbarModule,
@@ -28,6 +30,10 @@ import { TimeTransitionComponent } from './components/time-transition/time-trans
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatDialogModule
+  ],
+  entryComponents: [
+    EndHistoryComponent
   ]
 })
 export class MainModule { }
