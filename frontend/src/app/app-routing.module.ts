@@ -17,10 +17,12 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        outlet: 'chat-outlet',
         component: IntroductionComponent
       },
       {
         path: ':id',
+        outlet: 'chat-outlet',
         component: ChatComponent
       }
     ]
