@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
-        "dev": "cross-env DEBUG=API-REST nodemon index.js",
+        "dev": "cross-env DEBUG=* nodemon index.js",
         "lint": "eslint index.js"
     },
     "repository": {
