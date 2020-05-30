@@ -1,0 +1,11 @@
+<div *ngIf="fadeIn" class="click-catcher"></div>
+<main [ngClass]="{'active': fadeIn}">
+  <section>
+    <p>
+      <label class="clock">
+        <ng-template>🕐</ng-template>
+      </label>
+    </p>
+    <h1>{{message}}</h1>
+  </section>
+</main>

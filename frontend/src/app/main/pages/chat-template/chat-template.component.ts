@@ -10,9 +10,11 @@ export class ChatTemplateComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    /*
     setTimeout(() => {
       this.fadeIn = false;
     }, 1000 * 5);
+    */
   }
 
 }
