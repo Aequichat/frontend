@@ -1,4 +1,3 @@
-
 FROM node:12
 # Setting env variables from secrets
 ENV DB_ENDPOINT=_DB_ENDPOINT_
