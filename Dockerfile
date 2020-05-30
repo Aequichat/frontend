@@ -9,5 +9,6 @@ ENV API_PORT=__API_PORT__
 COPY backend/package*.json ./
 RUN npm install
 COPY backend/ ./
+RUN npm run lint
 EXPOSE __API_PORT__
 CMD [ "node", "index.js" ]

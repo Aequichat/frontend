@@ -1,0 +1,48 @@
+.content-wrapper {
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: #f2f2f2;
+}
+
+.content-container {
+    width: 90%;
+    height: 90%;
+    display: flex;
+}
+
+mat-drawer-container {
+    width: 100%;
+}
+
+mat-drawer {
+    width: 25%;
+}
+
+.app-icon {
+    width: 27px;
+    padding-right: 10px;
+}
+
+@media (max-width: 1279px) and (min-width: 600px) {
+
+    .content-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    mat-drawer {
+        width: 35%;
+    }
+}
+
+@media (max-width: 599px) {
+    .content-container,
+    mat-drawer,
+    mat-drawer-content {
+        width: 100%;
+        height: 100%;
+    }
+}
