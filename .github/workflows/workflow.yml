@@ -21,7 +21,7 @@ jobs:
       - name: Compile Angular App
         run: cd frontend && npm install && npm install @angular/cli && npm run-script ng build --aot --prod
       - name: Copy angular folder to backend public
-        run: mv frontend/dist/frontend backend/frontend
+        run: mv frontend/dist/frontend backend/public
       - name: Login to Heroku Container registry
         env: 
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
