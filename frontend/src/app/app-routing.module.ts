@@ -1,13 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router'; // CLI imports router
-
+import { RouterModule, Routes } from '@angular/router'; // CLI imports router
 import { LoginComponent } from './main/pages/login/login.component';
+
 
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
   },
+  {
+    path: 'items',
+    loadChildren: () => import('./administrator/administrator.module').then(m => m.AdministratorModule)
+  }
 ];
 
 @NgModule({
