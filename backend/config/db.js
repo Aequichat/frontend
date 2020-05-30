@@ -1,5 +1,4 @@
 const { MongoClient } = require('mongodb');
-const debug = require('debug')('API-REST');
 
 const env = require('./env');
 
@@ -20,9 +19,6 @@ async function getConnection() {
 
         return db.db();
     } catch (error) {
-        debug('Database connection failed');
-        debug(error);
-
         return error;
     }
 }
