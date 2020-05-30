@@ -4,7 +4,6 @@ const connection = require('../config/db');
  * Login the user
  * @param {Object} req Request object
  * @param {Object} res Response object
- * @param {Function} next Next function handler
  */
 async function login(req, res) {
     try {
@@ -32,7 +31,6 @@ async function login(req, res) {
  * Register a new user
  * @param {Object} req Request object
  * @param {Object} res Response object
- * @param {Function} next Next function handler
  */
 async function register(req, res) {
     try {
