@@ -14,7 +14,7 @@ a{color:inherit;text-decoration:none}
 	width:100%;
 	margin:auto;
 	max-width:525px;
-  height: 90%;
+  height: 100%;
 	position:relative;
 	background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
@@ -46,7 +46,8 @@ a{color:inherit;text-decoration:none}
 .login-html .tab,
 .login-form .group .label,
 .login-form .group .button{
-	text-transform:uppercase;
+  text-transform:uppercase;
+  cursor: pointer;
 }
 .login-html .tab{
 	font-size:22px;
@@ -151,6 +152,10 @@ a{color:inherit;text-decoration:none}
 	text-align:center;
 }
 
+.center-div-content {
+  display: flex;
+  justify-content: center;
+};
 
 // MATERIAL
 
@@ -159,12 +164,21 @@ a{color:inherit;text-decoration:none}
   width: 100%;
 }
 
+::ng-deep .material-button {
+  width: 100%;
+  background-color: #1161ee !important;
+}
+
 mat-form-field.mat-form-field {
   color: white;
 }
 
 mat-label {
   color: white;
+}
+
+::ng-deep .mat-form-field-autofill-control {
+  background-color: transparent;
 }
 
 ::ng-deep .mat-focused .mat-form-field-label {
