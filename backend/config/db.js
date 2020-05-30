@@ -1,41 +1,30 @@
 const MongoClient = require('mongodb').MongoClient;
 const env = require('./env');
-// Connection URL
-const url = `'mongodb://${env.DB_USERNAME}:${env.DB_PASSWORD}@${env.DB_ENDPOINT}/${env.DB_NAME}`;
+const debug = require('debug');
 
-// Database Name
-const dbName = 'myproject';
+let db = null;
 
-let db = null
-
-// Use connect method to connect to the server
-_connect = async () => {
-  try {
-    let _db = await MongoClient.connect(url, function(err, client) {
-      assert.equal(null, err);
-      console.log("Connected successfully to server");
-      const db = client.db(dbName); 
-      client.close();
-    });
-    db = _db
-    return _db.db()
-  } catch (e) {
-    return e
-  }
-}
-
+/**
+ * Returns the database connection
+ */
 getConnection = async () => {
-  try {
-    if (db == null) {
-      db = await _connect()
-      console.log('Connected')
+    if (db) {
+        return db.db();
+    } else {
+        try {
+            const url = `mongodb+srv://${env.DB_USERNAME}:${env.DB_PASSWORD}@${env.DB_ENDPOINT}/${env.DB_NAME}`;
+            db = await MongoClient.connect(url, { useUnifiedTopology: true });
+
+            return db.db();
+        } catch (error) {
+            debug.log('Database connection failed')
+            debug.log(error);
+
+            return error;
+        }
     }
-    return db
-  } catch (e) {
-    // logger.error(e) TODO: log the error
-    return e
-  }
 }
 
-module.exports = getConnection()
-  
+module.exports = {
+    getConnection
+}
