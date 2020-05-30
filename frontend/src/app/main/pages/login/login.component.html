@@ -1,3 +1,4 @@
+<div class="content-wrapper" fxFlexFill>
   <div class="login-wrap">
     <div class="login-html">
       <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Ingresar</label>
@@ -23,7 +24,7 @@
             </div>
             <div class="group center-div-content">
               <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button">Ingresar</button>
-              <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>
+              <mat-spinner *ngIf="isLoading" [diameter]="40" [color]="'white'"></mat-spinner>
             </div>
           </div>
         </form>
@@ -72,3 +73,4 @@
       </div>
     </div>
   </div>
+</div>

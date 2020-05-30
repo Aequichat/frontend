@@ -14,6 +14,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { IntroductionComponent } from './pages/introduction/introduction.component';
 import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [LoginComponent, StoryCardComponent, StoriesComponent, ChatTemplateComponent, ChatComponent, IntroductionComponent],
@@ -27,6 +28,7 @@ import { StoriesComponent } from './pages/stories/stories.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    AppRoutingModule,
   ]
 })
 export class MainModule { }
