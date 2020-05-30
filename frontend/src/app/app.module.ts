@@ -6,15 +6,15 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoriesComponent } from './main/pages/stories/stories.component';
+import { MainModule } from './main/main.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    StoriesComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
+    MainModule,
     FlexLayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     BrowserAnimationsModule,
