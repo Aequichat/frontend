@@ -4,6 +4,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    background-color: #f2f2f2;
 }
 
 .content-container {
@@ -17,7 +18,12 @@ mat-drawer-container {
 }
 
 mat-drawer {
-    width: 20%;
+    width: 25%;
+}
+
+.app-icon {
+    width: 27px;
+    padding-right: 10px;
 }
 
 @media (max-width: 1279px) and (min-width: 600px) {
@@ -28,12 +34,14 @@ mat-drawer {
     }
 
     mat-drawer {
-        width: 30%;
+        width: 35%;
     }
 }
 
 @media (max-width: 599px) {
-    .content-container {
+    .content-container,
+    mat-drawer,
+    mat-drawer-content {
         width: 100%;
         height: 100%;
     }

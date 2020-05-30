@@ -1,4 +1,7 @@
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'aequi-chat-template',
@@ -6,15 +9,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat-template.component.scss']
 })
 export class ChatTemplateComponent implements OnInit {
-  fadeIn = true;
-  constructor() { }
+
+  public isMobile: boolean;
+  public selectedChat: string;
+  public showChatList: Observable<boolean>;
+  public showChat: Observable<boolean>;
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
-    /*
-    setTimeout(() => {
-      this.fadeIn = false;
-    }, 1000 * 5);
-    */
+    this.observeResponsive();
+  }
+
+  private observeResponsive(): void {
+    this.showChatList = this.breakpointObserver.observe(['(max-width: 599px)'])
+      .pipe(map(mobile => !mobile.matches || (mobile.matches && !this.selectedChat)));
+    this.showChat = this.breakpointObserver.observe(['(max-width: 599px)'])
+      .pipe(map(mobile => !mobile.matches || (mobile.matches && this.selectedChat !== undefined)));
   }
 
 }
