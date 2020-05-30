@@ -1,8 +1,19 @@
-const debug = require('debug');
+const debug = require('debug')('API-REST');
 
 const app = require('./app');
-const config = require('./config');
+const config = require('./config/env');
+const connection = require('./config/db');
 
-app.listen(config.API_PORT, () => {
-    debug.log(`API REST running at port ${config.API_PORT}`);
-});
+async function init() {
+    const db = await connection.getConnection();
+
+    if (db) {
+        debug('Database connection successful');
+
+        app.listen(config.API_PORT, () => {
+            debug(`API REST running at port ${config.API_PORT}`);
+        });
+    }
+}
+
+init();
