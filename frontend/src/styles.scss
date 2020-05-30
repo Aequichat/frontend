@@ -30,3 +30,8 @@ $frontend-theme: mat-light-theme($frontend-primary, $frontend-accent, $frontend-
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+div.remove-panel mat-dialog-container {
+  box-shadow: none;
+  background: none;
+  color: none;
+}
