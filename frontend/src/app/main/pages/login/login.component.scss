@@ -5,6 +5,21 @@ body{
 	font:600 16px/18px 'Open Sans',sans-serif;
 }
 
+.content-wrapper {
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: #f2f2f2;
+}
+
+.content-container {
+  width: 90%;
+  height: 90%;
+  display: flex;
+}
+
 *,:after,:before{box-sizing:border-box}
 .clearfix:after,.clearfix:before{content:'';display:table}
 .clearfix:after{clear:both;display:block}
@@ -14,7 +29,7 @@ a{color:inherit;text-decoration:none}
 	width:100%;
 	margin:auto;
 	max-width:525px;
-  height: 100%;
+  height: 90%;
 	position:relative;
 	background:url(https://raw.githubusercontent.com/khadkamhn/day-01-login-form/master/img/bg.jpg) no-repeat center;
 	box-shadow:0 12px 15px 0 rgba(0,0,0,.24),0 17px 50px 0 rgba(0,0,0,.19);
@@ -194,5 +209,16 @@ mat-label {
 ::ng-deep.mat-form-field-ripple {
  /*change color of underline when focused*/
  background-color: white !important;;
+}
+
+@media (max-width: 599px) {
+  .login-wrap {
+    height: 100%;
+  }
+
+  .login-html {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
 }
 

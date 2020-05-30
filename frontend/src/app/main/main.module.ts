@@ -15,6 +15,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { IntroductionComponent } from './pages/introduction/introduction.component';
 import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
+import { AppRoutingModule } from '../app-routing.module';
 import { TimeTransitionComponent } from './components/time-transition/time-transition.component';
 import { EndHistoryComponent } from './components/end-history/end-history.component';
 import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end-history-wrapper.component';
@@ -30,10 +31,12 @@ import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    AppRoutingModule
   ],
   entryComponents: [
     EndHistoryComponent
+
   ]
 })
 export class MainModule { }
