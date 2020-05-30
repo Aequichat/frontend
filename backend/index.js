@@ -5,14 +5,16 @@ const config = require('./config/env');
 const connection = require('./config/db');
 
 async function init() {
-    const db = await connection.getConnection();
+    try {
+        await connection.getConnection();
 
-    if (db) {
         debug('Database connection successful');
 
         app.listen(config.API_PORT, () => {
             debug(`API REST running at port ${config.API_PORT}`);
         });
+    } catch (error) {
+        debug('DATA-BASE ERROR ->', error);
     }
 }
 

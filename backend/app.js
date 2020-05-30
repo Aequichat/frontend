@@ -1,9 +1,15 @@
 const express = require('express');
-const expressStaticGzip = require("express-static-gzip");
+const bodyParser = require('body-parser');
+const expressStaticGzip = require('express-static-gzip');
+
+const userRoutes = require('./routes/user');
+
 const app = express();
 
-app.get('/api/test', (req, res) => {
-    res.send('Aequichat API REST');
-});
-app.use(expressStaticGzip('public'))
+app.use(expressStaticGzip('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+app.use('/api', userRoutes);
+
 module.exports = app;
