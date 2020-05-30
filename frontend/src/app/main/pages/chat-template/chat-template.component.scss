@@ -1,0 +1,40 @@
+.content-wrapper {
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.content-container {
+    width: 90%;
+    height: 90%;
+    display: flex;
+}
+
+mat-drawer-container {
+    width: 100%;
+}
+
+mat-drawer {
+    width: 20%;
+}
+
+@media (max-width: 1279px) and (min-width: 600px) {
+
+    .content-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    mat-drawer {
+        width: 30%;
+    }
+}
+
+@media (max-width: 599px) {
+    .content-container {
+        width: 100%;
+        height: 100%;
+    }
+}
