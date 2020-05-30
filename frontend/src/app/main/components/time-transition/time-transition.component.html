@@ -1,10 +1,20 @@
 <div *ngIf="fadeIn" class="click-catcher"></div>
 <main [ngClass]="{'active': fadeIn}">
   <section>
-    <p>
-      <label class="clock">
-        <ng-template>🕐</ng-template>
-      </label>
+    <p class="clock-container" [ngSwitch]="hour">
+      <label *ngSwitchCase="1">🕐</label>
+      <label *ngSwitchCase="2">🕑</label>
+      <label *ngSwitchCase="3">🕒</label>
+      <label *ngSwitchCase="4">🕓</label>
+      <label *ngSwitchCase="5">🕔</label>
+      <label *ngSwitchCase="6">🕕</label>
+      <label *ngSwitchCase="7">🕖</label>
+      <label *ngSwitchCase="8">🕘</label>
+      <label *ngSwitchCase="9">🕘</label>
+      <label *ngSwitchCase="10">🕙</label>
+      <label *ngSwitchCase="11">🕚</label>
+      <label *ngSwitchCase="12">🕛</label>
+      <label *ngSwitchDefault>🕐</label>
     </p>
     <h1>{{message}}</h1>
   </section>
