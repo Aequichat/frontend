@@ -1,1 +1,74 @@
-<p>login works!</p>
+  <div class="login-wrap">
+    <div class="login-html">
+      <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Ingresar</label>
+      <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrarme</label>
+      <div class="login-form">
+        <form [formGroup]="userForm" (ngSubmit)="login()">
+          <div class="sign-in-htm">
+            <div class="group">
+              <mat-form-field appearance="fill" class='material-input'>
+                <mat-label>Usuario o correo</mat-label>
+                <input matInput formControlName="username">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-error>Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="group">
+              <mat-form-field appearance="fill" class='material-input'>
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="password">
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-error>Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="group center-div-content">
+              <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button">Ingresar</button>
+              <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>
+            </div>
+          </div>
+        </form>
+
+        <div class="sign-up-htm">
+          <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+            <div class="group">
+              <mat-form-field appearance="fill" class='material-input'>
+                <mat-label>Usuario</mat-label>
+                <input matInput formControlName="newUsername">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-error>Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="group">
+              <mat-form-field appearance="fill" class='material-input'>
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" formControlName="newPassword">
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-error>Este campo es requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="group">
+              <mat-form-field appearance="fill" class='material-input'>
+                <mat-label>Repetir contraseña</mat-label>
+                <input matInput type="password" formControlName="repeatPassword">
+                <mat-icon matSuffix>lock</mat-icon>
+                <mat-error>Este campo es requerido y debe coincidir con la contraseña</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="group">
+              <mat-form-field appearance="fill" class='material-input'>
+                <mat-label>Correo electrónico</mat-label>
+                <input matInput formControlName="newEmail">
+                <mat-icon matSuffix>alternate_email</mat-icon>
+                <mat-error>Email con formato (yo@correo.com) requerido</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="group center-div-content">
+              <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button">Registrarme</button>
+              <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
