@@ -19,7 +19,7 @@ jobs:
             API_PORT: ${{ secrets.API_PORT }}
         run: perl -pi -e 's/__DB_ENDPOINT__/$ENV{DB_ENDPOINT}/' Dockerfile && perl -pi -e 's/__DB_USERNAME__/$ENV{DB_USERNAME}/' Dockerfile && perl -pi -e 's/__DB_PASSWORD__/$ENV{DB_PASSWORD}/' Dockerfile && perl -pi -e 's/__DB_NAME__/$ENV{DB_NAME}/' Dockerfile && perl -pi -e 's/__API_PORT__/$ENV{API_PORT}/' Dockerfile
       - name: Compile Angular App
-        run: cd frontend && npm install && npm install -g @angular/cli && ng build --aot --prod
+        run: cd frontend && npm install && npm install @angular/cli && npm run-script ng build --aot --prod
       - name: Copy angular folder to backend public
         run: mv frontend/dist/frontend backend/frontend
       - name: Login to Heroku Container registry
