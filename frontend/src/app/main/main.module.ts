@@ -15,9 +15,10 @@ import { IntroductionComponent } from './pages/introduction/introduction.compone
 import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { TimeTransitionComponent } from './components/time-transition/time-transition.component';
 
 @NgModule({
-  declarations: [LoginComponent, StoryCardComponent, StoriesComponent, ChatTemplateComponent, ChatComponent, IntroductionComponent],
+  declarations: [LoginComponent, StoryCardComponent, StoriesComponent, ChatTemplateComponent, ChatComponent, IntroductionComponent, TimeTransitionComponent],
   imports: [
     MatSidenavModule,
     MatToolbarModule,
