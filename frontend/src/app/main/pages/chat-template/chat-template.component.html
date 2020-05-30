@@ -1,9 +1,17 @@
 <div class="content-wrapper" fxFlexFill>
-    <div class="content-container">
+    <div class="content-container mat-elevation-z8">
         <mat-drawer-container class="side-container" fxFlexFill>
             <mat-drawer
                 mode="side"
-                [opened]="showChatList | async">Chats</mat-drawer>
+                [opened]="showChatList | async">
+                <mat-toolbar class="mat-elevation-z2">
+                    <img class="app-icon" src="assets/icons/icon.png" alt="Aequichat">
+                    <span>Aequichat</span>
+                </mat-toolbar>
+                <div class="stories-container">
+                    <aequi-stories></aequi-stories>
+                </div>
+            </mat-drawer>
             <mat-drawer-content
                 [ngStyle]="{'visibility': (showChat | async) ? 'visible' : 'hidden'}">
                 Chat

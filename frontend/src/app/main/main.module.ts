@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { StoryCardComponent } from './components/story-card/story-card.component';
 import { ChatTemplateComponent } from './pages/chat-template/chat-template.component';
 import { ChatComponent } from './pages/chat/chat.component';
@@ -13,6 +14,7 @@ import { StoriesComponent } from './pages/stories/stories.component';
   declarations: [LoginComponent, StoryCardComponent, StoriesComponent, ChatTemplateComponent, ChatComponent, IntroductionComponent],
   imports: [
     MatSidenavModule,
+    MatToolbarModule,
     CommonModule
   ]
 })
