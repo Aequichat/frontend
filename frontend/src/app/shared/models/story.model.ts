@@ -1,14 +1,15 @@
 import { Character } from './character.model';
+import { Event } from './event.model';
 
 export class Story {
-    _id: string;
+    id: string;
     name: string;
     icon: string;
     characters: {[name: string]: Character};
-    events: any;
+    events: {[name: string]: Event};
 
     constructor(id: string, name: string, icon: string) {
-        this._id = id;
+        this.id = id;
         this.name = name;
         this.icon = icon;
     }

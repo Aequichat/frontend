@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Character } from 'src/app/shared/models/character.model';
+import { ActivatedRoute } from '@angular/router';
+import { StoryService } from 'src/app/shared/services/story.service';
 
 @Component({
   selector: 'aequi-chat',
@@ -7,45 +8,11 @@ import { Character } from 'src/app/shared/models/character.model';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
-  members: Character[];
-  constructor() {
-    this.members = [
-      {
-        name: 'Prueba',
-        color: '#ff00ff'
-      },
-      {
-        name: 'Camo',
-        color: "#00FFFF"
-      },
-      {
-        name: 'Prueba',
-        color: '#ff00ff'
-      },
-      {
-        name: 'Camo',
-        color: "#00FFFF"
-      },
-      {
-        name: 'Prueba',
-        color: '#ff00ff'
-      },
-      {
-        name: 'Camo',
-        color: "#00FFFF"
-      },
-      {
-        name: 'Prueba',
-        color: '#ff00ff'
-      },
-      {
-        name: 'Camo',
-        color: "#00FFFF"
-      }
-    ]
-  }
+
+  constructor(private route: ActivatedRoute, public storyService: StoryService) { }
 
   ngOnInit(): void {
+    this.storyService.openedStory = this.route.snapshot.params.id;
   }
 
 }
