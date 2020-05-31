@@ -6,11 +6,11 @@
                 [opened]="showChatList"
                 disableClose="true">
                 <mat-toolbar class="mat-elevation-z2">
-                    <button mat-icon-button (click)="logout()">
-                      <mat-icon class="mat-icon-rtl-mirror">close</mat-icon>
-                    </button>
                     <img class="app-icon" src="assets/icons/icon.png" alt="Aequichat">
                     <span class="app-title">Aequichat</span>
+                    <button mat-icon-button (click)="logout()">
+                      <mat-icon class="mat-icon-rtl-mirror">exit_to_app</mat-icon>
+                    </button>
                 </mat-toolbar>
                 <div class="stories-container">
                     <aequi-stories></aequi-stories>
