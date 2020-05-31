@@ -5,8 +5,8 @@ import { Option } from 'src/app/shared/models/option.model';
 import { Progress } from 'src/app/shared/models/progress.model';
 import { Story } from 'src/app/shared/models/story.model';
 
-import storyJson from './json';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { ProgressService } from 'src/app/shared/services/progress.service';
 
 @Component({
   selector: 'aequi-chat-body',
@@ -16,40 +16,51 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class ChatBodyComponent implements OnInit {
 
-  public conversation: Story = storyJson;
-
   @ViewChild('bottom', {static: false}) bottom: ElementRef;
 
   @Input() name: string;
+  @Input() conversation: Story;
 
   public messages: Event[] = [];
   public currentEventKey = '0';
   public showFadeIn: boolean;
 
-  private progress: Progress;
+  public progress: Progress;
   public currentEvent: Event;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private progressService: ProgressService) {}
 
   ngOnInit(): void {
-    this.progress = {
-      userId: '1',
-      storyId: '1',
-      currentEvent: '0',
-      parameters: {},
-      selectedPath: [],
-      completedStories: [],
-    };
+    this.progressService.getProgress(this.authService.getUser().username).subscribe(progress => {
+      this.progress = progress;
+      let loadFirsTime: boolean;
 
-    if (this.progress.selectedPath.length !== 0) {
-      // if (currentMessage.type === 'text' || currentMessage.type === 'image' || currentMessage.type === 'action') {
-      //   this.messages.unshift(currentMessage);
-      // }
-      this.messages = [...this.progress.selectedPath];
-      this.currentEventKey = this.progress.currentEvent;
-    }
+      if (!progress.username) {
+        loadFirsTime = true;
+        this.progress = {
+          username: this.authService.getUser().username,
+          storyId: this.conversation.id,
+          currentEvent: '0',
+          parameters: {},
+          selectedPath: [],
+          completedStories: [],
+        };
+      }
 
-    this.processEvent(this.currentEventKey);
+      if (this.progress.selectedPath && this.progress.selectedPath.length !== 0) {
+        this.messages = [...this.progress.selectedPath];
+        this.currentEventKey = this.progress.currentEvent;
+        this.currentEvent = this.conversation.events[this.currentEventKey];
+      }
+
+      if (loadFirsTime) {
+        this.processEvent(this.currentEventKey);
+      }
+
+      setTimeout(() => {
+        this.scrollToBottom();
+      }, 1);
+    });
   }
 
   public handleClickedOption(option: Option) {
@@ -119,18 +130,23 @@ export class ChatBodyComponent implements OnInit {
     }
 
     this.progress.currentEvent = this.currentEventKey;
+    this.progressService.saveProgress(this.progress).subscribe(response => {
+      console.log(response);
+    }, error => {
+      console.log(error);
+    });
   }
 
   private addMessage() {
     this.currentEvent.value = this.currentEvent.value?.replace('[user]', this.authService.getUser().username);
     this.messages.unshift(this.currentEvent);
-    this.progress.selectedPath.push(this.currentEvent);
+    this.progress.selectedPath.unshift(this.currentEvent);
     setTimeout(() => {
       this.scrollToBottom();
     }, 1);
   }
 
-  public scrollToBottom() {
+  private scrollToBottom() {
     if (this.bottom !== undefined) {
       this.bottom.nativeElement.scrollIntoView();
     }

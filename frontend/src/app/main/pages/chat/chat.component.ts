@@ -5,6 +5,9 @@ import { Story } from 'src/app/shared/models/story.model';
 import { StoryService } from 'src/app/shared/services/story.service';
 
 import { Option } from 'src/app/shared/models/option.model';
+import { ProgressService } from 'src/app/shared/services/progress.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { Progress } from 'src/app/shared/models/progress.model';
 
 @Component({
   selector: 'aequi-chat',
@@ -16,8 +19,10 @@ export class ChatComponent implements OnInit {
 
   members: Character[] = [];
   story: Story;
+  progress: Progress;
 
-  constructor(private route: ActivatedRoute, public storyService: StoryService) { }
+  constructor(private route: ActivatedRoute,
+    public storyService: StoryService) { }
 
   ngOnInit(): void {
     this.tempOptions = [
