@@ -1,0 +1,10 @@
+.chat {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+
+  aequi-chat-body {
+    flex: 1;
+    overflow: auto;
+  }
+}

@@ -11,6 +11,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';
+import { ToastrModule } from 'ngx-toastr';
 
 import { StoryCardComponent } from './components/story-card/story-card.component';
 import { TimeTransitionComponent } from './components/time-transition/time-transition.component';
@@ -21,10 +23,29 @@ import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
 import { EndHistoryComponent } from './components/end-history/end-history.component';
 import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end-history-wrapper.component';
+import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
+import { ChatBodyComponent } from './components/chat-body/chat-body.component';
+import { ChatOptionsComponent } from './components/chat-options/chat-options.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ChatImageComponent } from './components/chat-image/chat-image.component';
 
 @NgModule({
+  declarations: [
+    LoginComponent,
+    StoryCardComponent,
+    StoriesComponent,
+    ChatTemplateComponent,
+    ChatComponent,
+    IntroductionComponent,
+    TimeTransitionComponent,
+    EndHistoryComponent,
+    EndHistoryWrapperComponent,
+    ChatHeaderComponent,
+    ChatBodyComponent,
+    ChatOptionsComponent,
+    ChatImageComponent,
+    MatChipsModule
+  ],
   imports: [
     AppRoutingModule,
     CommonModule,
@@ -39,18 +60,7 @@ import { ChatImageComponent } from './components/chat-image/chat-image.component
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-  ],
-  declarations: [
-    LoginComponent,
-    StoryCardComponent,
-    StoriesComponent,
-    ChatComponent,
-    ChatTemplateComponent,
-    IntroductionComponent,
-    TimeTransitionComponent,
-    EndHistoryComponent,
-    EndHistoryWrapperComponent,
-    ChatImageComponent
-  ],
+    ToastrModule.forRoot()
+  ]
 })
 export class MainModule { }

@@ -1,0 +1,10 @@
+.chat-options {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+
+  .option {
+    padding: 5px 20px;
+    cursor: pointer;
+  }
+}

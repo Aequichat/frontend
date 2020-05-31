@@ -16,7 +16,6 @@ export class TimeTransitionComponent implements OnChanges {
 
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
     if (changes && changes.hour && changes.hour.currentValue) {
       this.hour = Math.trunc(Number(changes.hour.currentValue))
       if (this.hour > 12) {
