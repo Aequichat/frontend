@@ -1,6 +1,7 @@
 import { TitleCasePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { Event } from '../../../shared/models/event.model';
+import { Story } from 'src/app/shared/models/story.model';
 
 @Component({
   selector: 'aequi-chat-action',
@@ -11,6 +12,7 @@ export class ChatActionComponent implements OnInit {
 
   @Input() action: Event;
   @Input() chatName: string;
+  @Input() conversation: Story;
   text: string;
 
   constructor(private titlecasePipe: TitleCasePipe) { }
@@ -33,13 +35,13 @@ export class ChatActionComponent implements OnInit {
   }
 
   private getAddMessage(): string {
-    let message = this.titlecasePipe.transform(this.action.from);
+    let message = this.titlecasePipe.transform(this.conversation.characters[this.action.from].name);
     if (this.action.to === 'user') {
       message += ' te ';
     }
     message += ' ha añadido';
     if (this.action.to !== 'user') {
-      message += ` a ${this.titlecasePipe.transform(this.action.to)}.`;
+      message += ` a ${this.titlecasePipe.transform(this.conversation.characters[this.action.to].name)}.`;
     } else {
       message += '.';
     }
@@ -47,7 +49,7 @@ export class ChatActionComponent implements OnInit {
   }
 
   private getCreateMessage(): string {
-    return `${this.titlecasePipe.transform(this.action.from)} ha creado el grupo ${this.titlecasePipe.transform(this.chatName)}.`;
+    return `${this.titlecasePipe.transform(this.conversation.characters[this.action.from].name)} ha creado el grupo ${this.titlecasePipe.transform(this.chatName)}.`;
   }
 
 }

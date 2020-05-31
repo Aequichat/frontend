@@ -55,4 +55,8 @@ export class StoryService {
   openStory(storyId?: string) {
     this.openedStory.next(storyId);
   }
+
+  cleanStory() {
+    this.stories.filter(story => story.id == this.openedStory.value).forEach(storyFound => storyFound.characters = null);
+  }
 }
