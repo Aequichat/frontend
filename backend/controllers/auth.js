@@ -10,7 +10,7 @@ async function login(req, res) {
         const { username, password } = req.body;
 
         if (!username || !password) {
-            return res.status(402).send({ message: 'Params missing' });
+            return res.status(400).send({ message: 'Datos incompletos' });
         }
 
         const db = await connection.getConnection();
@@ -18,12 +18,12 @@ async function login(req, res) {
         const user = await usersCollection.findOne({ username, password });
 
         if (!user) {
-            return res.status(404).send({ message: 'User not exists' });
+            return res.status(404).send({ message: 'Usuario o contraña no validos'});
         }
 
         return res.status(200).send({ user });
     } catch (error) {
-        return res.status(500).send({ message: error });
+        return res.status(500).send(error);
     }
 }
 
