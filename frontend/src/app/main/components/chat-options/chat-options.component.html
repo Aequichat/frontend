@@ -5,7 +5,7 @@
 
 <ng-template #optionsContent>
     <div class="option" *ngFor="let option of options" (click)="selectOption(option)">
-      {{ option.label }}
+      <div [innerHTML]="option.label"></div>
     </div>
 </ng-template>
 

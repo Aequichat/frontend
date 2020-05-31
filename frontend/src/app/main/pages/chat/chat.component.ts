@@ -5,6 +5,9 @@ import { Story } from 'src/app/shared/models/story.model';
 import { StoryService } from 'src/app/shared/services/story.service';
 
 import { Option } from 'src/app/shared/models/option.model';
+import { ProgressService } from 'src/app/shared/services/progress.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { Progress } from 'src/app/shared/models/progress.model';
 
 @Component({
   selector: 'aequi-chat',
@@ -14,10 +17,12 @@ import { Option } from 'src/app/shared/models/option.model';
 export class ChatComponent implements OnInit {
   tempOptions: Option[];
 
-  members: Character[] = [];
+  members: {[name: string]: Character};
   story: Story;
+  progress: Progress;
 
-  constructor(private route: ActivatedRoute, public storyService: StoryService) { }
+  constructor(private route: ActivatedRoute,
+    public storyService: StoryService) { }
 
   ngOnInit(): void {
     this.tempOptions = [
@@ -47,11 +52,16 @@ export class ChatComponent implements OnInit {
 
     this.storyService.getStory(storyId).subscribe(story => {
       this.story = story;
+      this.members = story.characters;
     });
 
     if (storyId) {
       this.storyService.openStory(storyId);
     }
+  }
+
+  updateMembers(members: {[name: string]: Character}) {
+    this.members = {...members};
   }
 
   @HostListener('window:popstate', ['$event'])

@@ -1,7 +1,7 @@
 import { Event } from './event.model';
 
 export interface Progress {
-    userId: string;
+    username: string;
     storyId: string;
     currentEvent?: string;
     parameters?: {[name: string]: any};
