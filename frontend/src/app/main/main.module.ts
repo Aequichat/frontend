@@ -15,7 +15,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from '../app-routing.module';
-import { ChatActionComponent } from './components/chat-action/chat-action.component';
 import { ChatBodyComponent } from './components/chat-body/chat-body.component';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
 import { ChatImageComponent } from './components/chat-image/chat-image.component';
@@ -29,24 +28,6 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { IntroductionComponent } from './pages/introduction/introduction.component';
 import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
-
-@NgModule({
-  declarations: [
-    LoginComponent,
-    StoryCardComponent,
-    StoriesComponent,
-    ChatTemplateComponent,
-    ChatComponent,
-    IntroductionComponent,
-    TimeTransitionComponent,
-    EndHistoryComponent,
-    EndHistoryWrapperComponent,
-    ChatHeaderComponent,
-    ChatBodyComponent,
-    ChatOptionsComponent,
-    ChatActionComponent,
-  ],
-
 
 @NgModule({
   imports: [
