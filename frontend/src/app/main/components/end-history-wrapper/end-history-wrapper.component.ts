@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EndHistoryComponent } from '../../components/end-history/end-history.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'aequi-end-history-wrapper',
@@ -12,10 +13,10 @@ export class EndHistoryWrapperComponent implements OnInit {
   @Input() color: string;
   @Input() message: string;
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
-    this.dialog.open(EndHistoryComponent, {
+    const dialog = this.dialog.open(EndHistoryComponent, {
       data: {
         emoji: this.emoji,
         color: this.color,
@@ -23,6 +24,9 @@ export class EndHistoryWrapperComponent implements OnInit {
       },
       panelClass: 'end-story'
     });
+    dialog.afterClosed().subscribe(() => {
+      this.router.navigateByUrl('/chats');
+    })
   }
 
 }
