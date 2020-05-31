@@ -11,6 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AppRoutingModule } from '../app-routing.module';
 import { StoryCardComponent } from './components/story-card/story-card.component';
 import { TimeTransitionComponent } from './components/time-transition/time-transition.component';
 import { ChatTemplateComponent } from './pages/chat-template/chat-template.component';
@@ -42,6 +43,7 @@ import { StoriesComponent } from './pages/stories/stories.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    AppRoutingModule,
   ]
 })
 export class MainModule { }
