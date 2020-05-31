@@ -16,29 +16,50 @@ export class AuthService {
   constructor(
     private httpClient: HttpClient,
     private router: Router
-    ) {
+  ) {
     this.apiUrl = environment.API_URL;
   }
 
+  /**
+   * Gets the user logged
+   */
   getUser(): User {
     return this.user;
   }
 
+  /**
+   * Sets the user logged
+   * @param user User data
+   */
   setUser(user: User): void {
     this.user = user;
     localStorage.setItem('user', JSON.stringify(user));
   }
 
+  /**
+   * Login a u ser
+   * @param username username
+   * @param password password
+   */
   login(username: string, password: string): Observable<User> {
     return this.httpClient.post<User>(`${this.apiUrl}/login`, { username, password});
   }
 
+  /**
+   * logout the user
+   */
   logout(): void {
     delete this.user;
     localStorage.removeItem('user');
     this.router.navigate(['/']);
   }
 
+  /**
+   * Register a new user
+   * @param username username
+   * @param email email
+   * @param password password
+   */
   register(username: string, email: string, password: string): Observable<string> {
     return this.httpClient.post<string>(`${this.apiUrl}/user`, { username, email, password});
   }

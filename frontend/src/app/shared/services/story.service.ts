@@ -15,6 +15,10 @@ export class StoryService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+   * Returns all stories
+   * @return Observable of stories
+   */
   getStories(): Observable<Story[]> {
     if (this.stories.length) {
       return of(this.stories);
@@ -26,6 +30,11 @@ export class StoryService {
     );
   }
 
+  /**
+   * Returns the story with the id provided
+   * @param id story id
+   * @returns Observable of the story
+   */
   getStory(id: string): Observable<Story> {
     const storyFoundIndex = this.stories.findIndex(story => story.id === id);
     const storyFound = this.stories[storyFoundIndex];
@@ -39,6 +48,10 @@ export class StoryService {
     );
   }
 
+  /**
+   * Emits the next value for the openStory observable
+   * @param storyId story id
+   */
   openStory(storyId: string) {
     this.openedStory.next(storyId);
   }
