@@ -31,15 +31,17 @@ import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end
     ChatTemplateComponent,
     ChatComponent,
     IntroductionComponent,
-    TimeTransitionComponent
+    TimeTransitionComponent,
+    EndHistoryComponent,
+    EndHistoryWrapperComponent
   ],
   imports: [
+    CommonModule,
     FlexLayoutModule,
     LayoutModule,
     MatSidenavModule,
     MatTooltipModule,
     MatToolbarModule,
-    CommonModule,
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
@@ -51,7 +53,6 @@ import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end
   ],
   entryComponents: [
     EndHistoryComponent
-
   ]
 })
 export class MainModule { }
