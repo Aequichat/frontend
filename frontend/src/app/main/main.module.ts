@@ -22,9 +22,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
 import { EndHistoryComponent } from './components/end-history/end-history.component';
 import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end-history-wrapper.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   imports: [
+    AppRoutingModule,
     CommonModule,
     FlexLayoutModule,
     LayoutModule,
@@ -44,7 +46,9 @@ import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end
     StoriesComponent,
     ChatTemplateComponent,
     ChatComponent, IntroductionComponent,
-    TimeTransitionComponent
+    TimeTransitionComponent,
+    EndHistoryComponent,
+    EndHistoryWrapperComponent
   ],
 })
 export class MainModule { }
