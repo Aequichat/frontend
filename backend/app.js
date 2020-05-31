@@ -8,6 +8,7 @@ const config = require('./config/env');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 const storyRoutes = require('./routes/story');
+const progressRoutes = require('./routes/progress');
 
 const app = express();
 const corsOptions = {
@@ -22,5 +23,6 @@ app.use(cors(corsOptions));
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
 app.use('/api', storyRoutes);
+app.use('/api', progressRoutes);
 
 module.exports = app;
