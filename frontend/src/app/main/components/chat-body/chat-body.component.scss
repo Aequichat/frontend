@@ -1,15 +1,17 @@
 .chat-box-main {
   flex: 1;
   width: 100%;
-  background: #fff;
   display: flex;
   overflow: auto;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 21px 4px -20px inset;
   flex-direction: column-reverse;
+  background-color: transparent;
 }
+
 .div-chat-box {
-    height: 90%;
-    overflow-y: auto;
+  height: 90%;
+  overflow-y: auto;
+  background-image: url('/assets/images/background.png');
 }
 
 /*** Scrollbar styles ***/

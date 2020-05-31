@@ -21,7 +21,7 @@ async function login(req, res) {
             return res.status(404).send({ message: 'Usuario o contraña no validos'});
         }
 
-        return res.status(200).send({ user });
+        return res.status(200).send( user );
     } catch (error) {
         return res.status(500).send(error);
     }
