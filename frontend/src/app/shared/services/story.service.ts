@@ -22,7 +22,6 @@ export class StoryService {
     return this.http.get<Story[]>(environment.API_URL + '/story').pipe(
       tap(stories => {
         this.stories = stories;
-        console.log(JSON.stringify(this.stories));
       })
     );
   }
