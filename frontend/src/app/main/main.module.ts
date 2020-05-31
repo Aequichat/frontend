@@ -18,7 +18,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { ChatActionComponent } from './components/chat-action/chat-action.component';
 import { ChatBodyComponent } from './components/chat-body/chat-body.component';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
-import { ChatImageComponent } from './components/chat-image.component';
+import { ChatImageComponent } from './components/chat-image/chat-image.component';
 import { ChatOptionsComponent } from './components/chat-options/chat-options.component';
 import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end-history-wrapper.component';
 import { EndHistoryComponent } from './components/end-history/end-history.component';
