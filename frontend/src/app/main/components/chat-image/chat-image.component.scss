@@ -108,10 +108,14 @@
 }
 
 .dialog-image {
+  position: absolute;
   max-height: 90vh !important;
-  height: 90vh;
-  margin: 5vh auto;
+  max-width: 90%;
   display: table;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   border-radius: 5px;
 }
 
