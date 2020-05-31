@@ -8,6 +8,7 @@ export class Story {
     icon: string;
     characters: {[name: string]: Character};
     events: {[name: string]: Event};
+    pending: boolean;
 
     constructor(id: string, name: string, icon: string) {
         this.id = id;

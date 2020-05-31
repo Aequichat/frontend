@@ -6,20 +6,35 @@
     </div>
     <div class="content-container">
         <span class="story-name">{{ story.chatName }}</span>
-        <span class="story-description" *ngIf="locked else notLocked">Historia bloqueada</span>
-        <ng-template #notLocked>
-            <span class="story-description" *ngIf="currentStory == story.id; else startStory">Continuar...</span>
-            <ng-template #startStory>
-                <span class="story-description" *ngIf="!currentStory">Comenzar historia...</span>
+        <ng-container *ngIf="story.pending; else notPending">
+            <span class="story-description" *ngIf="story.pending">Proximamente...</span>
+        </ng-container>
+        <ng-template #notPending>
+            <span class="story-description" *ngIf="locked else notLocked">Historia bloqueada</span>
+            <ng-template #notLocked>
+                <span class="story-description" *ngIf="currentStory == story.id; else startStory">Continuar...</span>
+                <ng-template #startStory>
+                    <span class="story-description" *ngIf="!currentStory">Comenzar historia...</span>
+                </ng-template>
             </ng-template>
         </ng-template>
     </div>
-    <div class="lock-container" *ngIf="locked">
+    <div class="lock-container" *ngIf="locked || story.pending">
         <mat-icon
             #tooltip="matTooltip"
             (click)="tooltip.show()"
-            matTooltip="Tienes que terminar la historia que estás siguiendo para poder continuar con otra.">
+            *ngIf="story.pending; else lockedLock"
+            matTooltip="La historia estará disponible próximamente.">
             lock
         </mat-icon>
+        <ng-template #lockedLock>
+            <mat-icon
+                #tooltip="matTooltip"
+                (click)="tooltip.show()"
+                *ngIf="locked"
+                matTooltip="Tienes que terminar la historia que estás siguiendo para poder continuar con otra.">
+                lock
+            </mat-icon>
+        </ng-template>
     </div>
 </div>
