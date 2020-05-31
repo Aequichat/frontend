@@ -1,46 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
+import { Story } from 'src/app/shared/models/story.model';
+import { ProgressService } from 'src/app/shared/services/progress.service';
 import { StoryService } from 'src/app/shared/services/story.service';
+import { Subscribable } from 'src/app/shared/utils/subscribable';
 
 @Component({
   selector: 'aequi-stories',
   templateUrl: './stories.component.html',
   styleUrls: ['./stories.component.scss']
 })
-export class StoriesComponent implements OnInit {
+export class StoriesComponent extends Subscribable implements OnInit {
 
-  constructor(public storyService: StoryService) { }
-
-  ngOnInit(): void {
-    this.getServices();
+  constructor(public storyService: StoryService, public progressService: ProgressService, private router: Router) {
+    super();
   }
 
-  getServices(): void {
-    this.storyService.stories = [
-      {
-        _id: '1',
-        name: 'Jesse',
-        icon: 'https://ak.picdn.net/shutterstock/videos/5118950/thumb/1.jpg',
-        characters: {
-          pedro: {
-            name: 'Pedro',
-            color: 'blue'
-          }
-        },
-        events: {}
-      },
-      {
-        _id: '2',
-        name: 'Jesse',
-        icon: 'https://ak.picdn.net/shutterstock/videos/5118950/thumb/1.jpg',
-        characters: {
-          pedro: {
-            name: 'Pedro',
-            color: 'blue'
-          }
-        },
-        events: {}
-      }
-    ];
+  ngOnInit(): void {
+    this.getStories();
+  }
+
+  getStories(): void {
+    this.storyService.getStories()
+      .pipe(takeUntil(this.destroyed))
+      .subscribe(stories => this.storyService.stories = stories);
+  }
+
+  openStory(story: Story): void {
+    const progress = this.progressService.progress;
+    if (progress &&  progress.storyId !== String(story.id)) {
+        alert('No puedes abrir otra historia sin terminar la anterior.');
+        return;
+    }
+    this.router.navigateByUrl('/chats/' + story.id);
   }
 
 }
