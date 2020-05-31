@@ -59,6 +59,7 @@
               [disabled]="!emailForm.valid">Enviar email</button>
             <mat-spinner *ngIf="isLoading" [diameter]="40" [color]="'white'"></mat-spinner>
           </div>
+          <a (click)="isEmailForm = false" class="recover-link">Iniciar sesión</a>
         </form>
 
         <ng-container *ngIf="!isNewpasswordForm && !isEmailForm">
