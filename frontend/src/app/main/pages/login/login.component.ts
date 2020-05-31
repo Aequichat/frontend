@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { User } from 'src/app/shared/models/user.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'aequi-login',
@@ -7,59 +12,88 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   public userForm: FormGroup;
   public signUpForm: FormGroup;
   public isLoading: boolean;
 
-  constructor(private formBuilder: FormBuilder) {
-    this.userForm = this.formBuilder.group({
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+    ) {}
+
+  ngOnInit(): void {
+    const userFormValidators = {
       username: ['', Validators.required],
       password: ['', Validators.required]
-    });
+    };
 
-    this.signUpForm = this.formBuilder.group({
+    const singUpFormValidators = {
       newUsername: ['', Validators.required],
       newPassword: ['', Validators.required],
       repeatPassword: ['', Validators.required],
       newEmail: ['', [Validators.required, Validators.email]]
-    }, {
-      validators: [this.matchPasswords('newPassword', 'repeatPassword')]
-    }
+    };
+
+    this.userForm = this.formBuilder.group(userFormValidators);
+
+    this.signUpForm = this.formBuilder.group(
+      singUpFormValidators,
+      {
+        validators: [this.matchPasswords('newPassword', 'repeatPassword')]
+      }
     );
   }
 
-  ngOnInit(): void {}
+  public login(): void {
+    const username = this.userForm.get('username').value;
+    const password = this.userForm.get('password').value;
 
-  public login() {
-    console.log(this.userForm.value.username, this.userForm.value.password);
     this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 3000);
+    this.authService.login(username, password).subscribe(
+      (user: User) => {
+        this.isLoading = false;
+        this.router.navigate(['/chats']);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.error.message);
+        this.isLoading = false;
+      }
+    );
   }
 
-  public signUp() {
-    console.log('Signing Up...');
+  public signUp(): void {
+    const username = this.signUpForm.get('newUsername').value;
+    const email = this.signUpForm.get('newEmail').value;
+    const password = this.signUpForm.get('newPassword').value;
+
+
     this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 3000);
+    this.authService.register(username, email, password).subscribe(
+      (response: any) => {
+        alert(response.message);
+        this.isLoading = false;
+        this.router.navigate(['/chats']);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.error.message);
+        this.isLoading = false;
+      }
+    );
   }
 
   private matchPasswords(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
-        const control = formGroup.controls[controlName];
-        const matchingControl = formGroup.controls[matchingControlName];
-        if (matchingControl.errors && !matchingControl.errors.mustMatch) {
-            return;
-        }
-        if (control.value !== matchingControl.value) {
-            matchingControl.setErrors({ mustMatch: true });
-        } else {
-            matchingControl.setErrors(null);
-        }
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+        return;
+      }
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({ mustMatch: true });
+      } else {
+        matchingControl.setErrors(null);
+      }
     }
-}
-
+  }
 }

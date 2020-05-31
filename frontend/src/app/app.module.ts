@@ -8,13 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
+import { HttpClientModule } from '@angular/common/http';
+
+import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
     HttpClientModule,
     BrowserModule,
@@ -25,9 +24,12 @@ import { MainModule } from './main/main.module';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MainModule
+    MainModule,
+    HttpClientModule
   ],
-  providers: [],
+  declarations: [
+    AppComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
