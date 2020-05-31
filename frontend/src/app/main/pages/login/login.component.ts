@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
@@ -19,6 +20,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
+    private toastr: ToastrService,
     private router: Router
     ) {}
 
@@ -56,7 +58,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/chats']);
       },
       (error: HttpErrorResponse) => {
-        alert(error.error.message);
+        this.toastr.error(error.error.message);
         this.isLoading = false;
       }
     );
@@ -71,12 +73,12 @@ export class LoginComponent implements OnInit {
     this.isLoading = true;
     this.authService.register(username, email, password).subscribe(
       (response: any) => {
-        alert(response.message);
+        this.toastr.success(response.message);
         this.isLoading = false;
         this.router.navigate(['/chats']);
       },
       (error: HttpErrorResponse) => {
-        alert(error.error.message);
+        this.toastr.error(error.error.message);
         this.isLoading = false;
       }
     );
