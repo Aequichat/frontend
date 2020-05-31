@@ -15,6 +15,5 @@ export class StoryCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // this.locked = true;
   }
 }

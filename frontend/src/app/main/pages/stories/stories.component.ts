@@ -29,7 +29,7 @@ export class StoriesComponent extends Subscribable implements OnInit {
 
   openStory(story?: Story): void {
     const progress = this.progressService.progress;
-    if (progress?.storyId &&  progress?.storyId !== String(story.id)) {
+    if (progress?.storyId &&  progress?.storyId !== story.id) {
         alert('No puedes abrir otra historia sin terminar la anterior.');
         return;
     }

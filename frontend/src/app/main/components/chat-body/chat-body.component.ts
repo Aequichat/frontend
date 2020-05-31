@@ -1,14 +1,13 @@
-import { Component, ElementRef, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { fadeIn, fadeInOut } from 'src/app/shared/animations';
+import { Character } from 'src/app/shared/models/character.model';
 import { Event } from 'src/app/shared/models/event.model';
 import { Option } from 'src/app/shared/models/option.model';
 import { Progress } from 'src/app/shared/models/progress.model';
 import { Story } from 'src/app/shared/models/story.model';
-import { Character } from 'src/app/shared/models/character.model';
-
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ProgressService } from 'src/app/shared/services/progress.service';
-import { skip } from 'rxjs/operators';
+
 
 @Component({
   selector: 'aequi-chat-body',
