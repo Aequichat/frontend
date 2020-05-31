@@ -1,16 +1,16 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-
-import { environment } from 'src/environments/environment';
 import { User } from 'src/app/shared/models/user.model';
+import { environment } from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   private apiUrl: string;
+  public user: User;
 
   constructor(private httpClient: HttpClient) {
     this.apiUrl = environment.API_URL;

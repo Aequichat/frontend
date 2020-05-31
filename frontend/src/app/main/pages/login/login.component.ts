@@ -1,11 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { User } from 'src/app/shared/models/user.model';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'aequi-login',
@@ -55,6 +55,8 @@ export class LoginComponent implements OnInit {
     this.authService.login(username, password).subscribe(
       (user: User) => {
         this.isLoading = false;
+        this.authService.user = user;
+        localStorage.setItem('user', JSON.stringify(user));
         this.router.navigate(['/chats']);
       },
       (error: HttpErrorResponse) => {
