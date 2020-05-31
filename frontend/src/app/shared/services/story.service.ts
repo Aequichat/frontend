@@ -10,6 +10,7 @@ import { Story } from '../models/story.model';
 export class StoryService {
 
   public stories: Story[] = [];
+  public openedStory: string;
 
   constructor(private http: HttpClient) { }
 

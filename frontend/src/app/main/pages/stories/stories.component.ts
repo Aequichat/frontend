@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
+import { Story } from 'src/app/shared/models/story.model';
+import { ProgressService } from 'src/app/shared/services/progress.service';
 import { StoryService } from 'src/app/shared/services/story.service';
 import { Subscribable } from 'src/app/shared/utils/subscribable';
 
@@ -10,7 +13,7 @@ import { Subscribable } from 'src/app/shared/utils/subscribable';
 })
 export class StoriesComponent extends Subscribable implements OnInit {
 
-  constructor(public storyService: StoryService) {
+  constructor(public storyService: StoryService, public progressService: ProgressService, private router: Router) {
     super();
   }
 
@@ -22,6 +25,10 @@ export class StoriesComponent extends Subscribable implements OnInit {
     this.storyService.getStories()
       .pipe(takeUntil(this.destroyed))
       .subscribe(stories => this.storyService.stories = stories);
+  }
+
+  openStory(story: Story): void {
+    this.router.navigateByUrl('/chats/' + story.id);
   }
 
 }
