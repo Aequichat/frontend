@@ -15,6 +15,11 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
+    path: 'forgot/:id',
+    component: LoginComponent,
+    canActivate: [LoginGuard],
+  },
+  {
     path: 'chats',
     component: ChatTemplateComponent,
     canActivate: [UserGuard],
