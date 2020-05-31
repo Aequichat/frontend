@@ -6,7 +6,7 @@
 <ng-template #optionsContent>
   <mat-chip-list>
     <mat-chip class="option" color="primary" selected *ngFor="let option of options" (click)="selectOption(option)">
-      {{ option.label }}
+      <div [innerHTML]="option.label"></div>
     </mat-chip>
   </mat-chip-list>
 </ng-template>

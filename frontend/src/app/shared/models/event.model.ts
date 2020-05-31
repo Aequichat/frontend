@@ -13,4 +13,9 @@ export interface Event {
     subtype?: EventSubtype;
     options?: Option[];
     parameter?: string;
+    skipText?: boolean;
+    emoji?: string;
+    color?: string;
+    message?: string;
+    goodEnd?: boolean;
 }
