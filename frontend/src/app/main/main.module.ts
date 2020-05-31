@@ -22,6 +22,7 @@ import { StoriesComponent } from './pages/stories/stories.component';
 import { EndHistoryComponent } from './components/end-history/end-history.component';
 import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end-history-wrapper.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { ChatImageComponent } from './components/chat-image/chat-image.component';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { AppRoutingModule } from '../app-routing.module';
     IntroductionComponent,
     TimeTransitionComponent,
     EndHistoryComponent,
-    EndHistoryWrapperComponent
+    EndHistoryWrapperComponent,
+    ChatImageComponent
   ],
 })
 export class MainModule { }
