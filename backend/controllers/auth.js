@@ -13,6 +13,8 @@ async function login(req, res) {
             return res.status(400).send({ message: 'Datos incompletos' });
         }
 
+        username = String(username).toLowerCase()
+
         const db = await connection.getConnection();
         const usersCollection = db.collection('users');
         const user = await usersCollection.findOne({ username, password });
