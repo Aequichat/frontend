@@ -10,7 +10,7 @@
         <ng-template #notLocked>
             <span class="story-description" *ngIf="currentStory == story.id; else startStory">Continuar...</span>
             <ng-template #startStory>
-                <span class="story-description" *ngIf="currentStory != story.id">Continuar...</span>
+                <span class="story-description" *ngIf="!currentStory">Comenzar historia...</span>
             </ng-template>
         </ng-template>
     </div>
