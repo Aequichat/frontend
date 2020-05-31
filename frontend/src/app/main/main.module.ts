@@ -22,6 +22,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
 import { EndHistoryComponent } from './components/end-history/end-history.component';
 import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end-history-wrapper.component';
+import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
+import { ChatBodyComponent } from './components/chat-body/chat-body.component';
+import { ChatOptionsComponent } from './components/chat-options/chat-options.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end
     IntroductionComponent,
     TimeTransitionComponent,
     EndHistoryComponent,
-    EndHistoryWrapperComponent
+    EndHistoryWrapperComponent,
+    ChatHeaderComponent,
+    ChatBodyComponent,
+    ChatOptionsComponent
   ],
   imports: [
     CommonModule,
