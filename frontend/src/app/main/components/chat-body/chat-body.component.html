@@ -24,4 +24,4 @@
 </div>
 
 <aequi-time-transition *ngIf="showFadeIn !== undefined" [fadeIn]="showFadeIn" [message]="currentEvent.value"></aequi-time-transition>
-<aequi-chat-options [options]="currentEvent.options" (selectedOption)="handleClickedOption($event)"></aequi-chat-options>
+<aequi-chat-options *ngIf="showFadeIn !== true" [options]="currentEvent.options" (selectedOption)="handleClickedOption($event)"></aequi-chat-options>
