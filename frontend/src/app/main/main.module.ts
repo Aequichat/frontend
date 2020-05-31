@@ -30,22 +30,6 @@ import { AppRoutingModule } from '../app-routing.module';
 import { ChatImageComponent } from './components/chat-image/chat-image.component';
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    StoryCardComponent,
-    StoriesComponent,
-    ChatTemplateComponent,
-    ChatComponent,
-    IntroductionComponent,
-    TimeTransitionComponent,
-    EndHistoryComponent,
-    EndHistoryWrapperComponent,
-    ChatHeaderComponent,
-    ChatBodyComponent,
-    ChatOptionsComponent,
-    ChatImageComponent,
-    MatChipsModule
-  ],
   imports: [
     AppRoutingModule,
     CommonModule,
@@ -60,7 +44,23 @@ import { ChatImageComponent } from './components/chat-image/chat-image.component
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatChipsModule,
     ToastrModule.forRoot()
+  ],
+  declarations: [
+    LoginComponent,
+    StoryCardComponent,
+    StoriesComponent,
+    ChatTemplateComponent,
+    ChatComponent,
+    IntroductionComponent,
+    TimeTransitionComponent,
+    EndHistoryComponent,
+    EndHistoryWrapperComponent,
+    ChatHeaderComponent,
+    ChatBodyComponent,
+    ChatOptionsComponent,
+    ChatImageComponent
   ]
 })
 export class MainModule { }
