@@ -1,8 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const expressStaticGzip = require('express-static-gzip');
-
 const config = require('./config/env');
 
 const authRoutes = require('./routes/auth');
@@ -24,7 +22,7 @@ app.use('/api', userRoutes);
 app.use('/api', storyRoutes);
 app.use('/api', progressRoutes);
 
-app.use(expressStaticGzip('public'));
+app.use(express.static('public'));
 app.get('*', function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
