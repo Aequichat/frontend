@@ -46,9 +46,7 @@ $custom-typography: mat-typography-config(
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: "Montserrat", sans-serif; }
-div.remove-panel mat-dialog-container {
-  box-shadow: none;
-  background: none;
-  color: none;
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.end-story mat-dialog-container{
+  padding: 0px;
 }

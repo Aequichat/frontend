@@ -1,6 +1,7 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,6 +20,8 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { IntroductionComponent } from './pages/introduction/introduction.component';
 import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
+import { EndHistoryComponent } from './components/end-history/end-history.component';
+import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end-history-wrapper.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,12 @@ import { StoriesComponent } from './pages/stories/stories.component';
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    AppRoutingModule,
+    MatDialogModule,
+    AppRoutingModule
+  ],
+  entryComponents: [
+    EndHistoryComponent
+
   ]
 })
 export class MainModule { }
