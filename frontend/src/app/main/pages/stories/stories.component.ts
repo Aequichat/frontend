@@ -12,7 +12,7 @@ import { Subscribable } from 'src/app/shared/utils/subscribable';
   styleUrls: ['./stories.component.scss']
 })
 export class StoriesComponent extends Subscribable implements OnInit {
-
+  public stories: Story[] = [];
   constructor(public storyService: StoryService, public progressService: ProgressService, private router: Router) {
     super();
   }
@@ -24,7 +24,7 @@ export class StoriesComponent extends Subscribable implements OnInit {
   getStories(): void {
     this.storyService.getStories()
       .pipe(takeUntil(this.destroyed))
-      .subscribe(stories => this.storyService.stories = stories);
+      .subscribe(stories => this.stories = stories);
   }
 
   openStory(story: Story): void {

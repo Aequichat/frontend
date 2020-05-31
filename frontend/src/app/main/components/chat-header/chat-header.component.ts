@@ -23,7 +23,10 @@ export class ChatHeaderComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes.members && changes.members.currentValue) {
-      this.memberList = changes.members.currentValue.map(member => member.name).join(', ')
+      const members = changes.members.currentValue;
+      const membersKeys = Object.keys(changes.members.currentValue);
+
+      this.memberList = membersKeys.map(key => members[key].name).join(', ')
     }
     console.log(changes);
   }

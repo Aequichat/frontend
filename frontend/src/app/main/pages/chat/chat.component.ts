@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { StoryService } from 'src/app/shared/services/story.service';
+import { Story } from 'src/app/shared/models/story.model';
 
 @Component({
   selector: 'aequi-chat',
@@ -9,10 +10,16 @@ import { StoryService } from 'src/app/shared/services/story.service';
 })
 export class ChatComponent implements OnInit {
 
+  story: Story;
+
   constructor(private route: ActivatedRoute, public storyService: StoryService) { }
 
   ngOnInit(): void {
-    this.storyService.openedStory = this.route.snapshot.params.id;
+    const storyId = this.route.snapshot.params.id;
+    this.storyService.openedStory = storyId;
+    this.storyService.getStory(storyId).subscribe(story => {
+      this.story = story;
+    });
   }
 
 }
