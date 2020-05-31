@@ -16,14 +16,12 @@ const routes: Routes = [
     component: ChatTemplateComponent,
     children: [
       {
-        path: '',
-        outlet: 'chat-outlet',
-        component: IntroductionComponent
+        path: ':id',
+        component: ChatComponent
       },
       {
-        path: ':id',
-        outlet: 'chat-outlet',
-        component: ChatComponent
+        path: '',
+        component: IntroductionComponent
       }
     ]
   },
