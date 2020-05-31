@@ -4,4 +4,8 @@ module.exports = {
     DB_USERNAME: process.env.DB_USERNAME || 'globhack',
     DB_PASSWORD: process.env.DB_PASSWORD || 'globhack',
     DB_NAME: process.env.DB_NAME || 'globhack-dev',
+    CORS_ORIGINS: [
+        'http://localhost:4200',
+        'https://aequichatglobhack.herokuapp.com/'
+    ]
 };
