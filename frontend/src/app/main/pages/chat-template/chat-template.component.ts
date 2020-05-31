@@ -59,10 +59,14 @@ export class ChatTemplateComponent extends Subscribable implements OnInit {
       filter(story => story !== undefined),
       takeUntil(this.destroyed)
     ).subscribe(story => {
-      this.router.navigateByUrl('/chats/' + story);
+      if (story) {
+        this.router.navigateByUrl('/chats/' + story);
+      }
+      else {
+        this.router.navigateByUrl('/chats');
+      }
       this.currentStory = story;
       this.updateVisibility();
     });
   }
-
 }
