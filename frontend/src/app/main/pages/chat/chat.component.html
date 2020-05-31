@@ -1,11 +1,11 @@
 <div class="chat" *ngIf="story">
   <aequi-chat-header
     [imageUrl]="story.icon"
-    [name]="story.name"
+    [name]="story.chatName"
     [members]="story.characters">
   </aequi-chat-header>
 
-  <aequi-chat-body [name]="story.name"></aequi-chat-body>
+  <aequi-chat-body [name]="story.chatName"></aequi-chat-body>
 
   <aequi-chat-options [options]="tempOptions"></aequi-chat-options>
 </div>
