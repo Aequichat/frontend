@@ -1,16 +1,16 @@
 <div class="chat-options">
-  <ng-container *ngIf="options.length; then optionsContent; else buttonContent">
+  <ng-container *ngIf="options && options.length; then optionsContent; else buttonContent">
   </ng-container>
 </div>
 
 <ng-template #optionsContent>
   <mat-chip-list>
-    <mat-chip class="option" color="primary" selected *ngFor="let option of options" (click)="selectOption(option.child, option.value)">
+    <mat-chip class="option" color="primary" selected *ngFor="let option of options" (click)="selectOption(option)">
       {{ option.label }}
     </mat-chip>
   </mat-chip-list>
 </ng-template>
 
 <ng-template #buttonContent>
-  <button mat-raised-button color="primary" class="continue-button">Continuar</button>
+  <button mat-raised-button color="primary" class="continue-button" (click)="selectOption()">Continuar</button>
 </ng-template>

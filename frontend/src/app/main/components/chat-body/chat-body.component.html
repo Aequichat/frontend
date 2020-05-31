@@ -16,16 +16,12 @@
           </div>
         </div>
       </div>
-      <div *ngIf="message.type == 'action'" class="bubble" [ngClass]="message.from !== 'user' ? 'left' : 'alt'" [@fadeIn]>
-        <div class="txt">
-          <span class="message">
-              <div [innerHTML]="message.value"></div>
-          </span>
-        </div>
+      <div *ngIf="message.type == 'action'" [@fadeIn]>
+        <aequi-chat-action [chatName]="name" [action]="message"></aequi-chat-action>
       </div>
     </ng-container>
   </div>
 </div>
 
-<button (click)="processEvent(currentEvent.child)">Continuar</button>
 <aequi-time-transition *ngIf="showFadeIn !== undefined" [fadeIn]="showFadeIn" [message]="currentEvent.value"></aequi-time-transition>
+<aequi-chat-options [options]="currentEvent.options" (selectedOption)="handleClickedOption($event)"></aequi-chat-options>
