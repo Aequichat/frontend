@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { StoryCardComponent } from './components/story-card/story-card.component';
 import { ChatTemplateComponent } from './pages/chat-template/chat-template.component';
 import { ChatComponent } from './pages/chat/chat.component';
@@ -18,7 +19,6 @@ import { AppRoutingModule } from '../app-routing.module';
 import { TimeTransitionComponent } from './components/time-transition/time-transition.component';
 
 @NgModule({
-  declarations: [LoginComponent, StoryCardComponent, StoriesComponent, ChatTemplateComponent, ChatComponent, IntroductionComponent, TimeTransitionComponent],
   imports: [
     MatSidenavModule,
     MatToolbarModule,
@@ -29,7 +29,14 @@ import { TimeTransitionComponent } from './components/time-transition/time-trans
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    AppRoutingModule,
-  ]
+    AppRoutingModule
+  ],
+  declarations: [
+    LoginComponent,
+    StoryCardComponent,
+    StoriesComponent,
+    ChatTemplateComponent,
+    ChatComponent, IntroductionComponent,
+    TimeTransitionComponent],
 })
 export class MainModule { }
