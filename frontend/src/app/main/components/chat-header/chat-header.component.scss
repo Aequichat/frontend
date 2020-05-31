@@ -4,3 +4,31 @@ img {
   border-radius: 100px;
   padding: 12px;
 }
+main {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  background: #f5f5f5;
+
+  section {
+    display: grid;
+    padding-right: 20px;
+
+    p {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin: 0px;
+
+      &:first-child {
+        align-self: flex-end;
+        font-weight: bolder;
+        font-size: 16px;
+      }
+
+      &:last-child {
+        font-size: 13px;
+        color: rgba(0,0,0,0.6);
+      }
+    }
+  }
+}

@@ -9,18 +9,22 @@ import { Character } from 'src/app/shared/models/character.model';
 export class ChatHeaderComponent implements OnInit, OnChanges {
 
   @Input() name: string;
-  @Input() members: Character;
+  @Input() members: Character[];
   @Input() imageUrl: string;
 
   public memberList: string;
 
-  constructor() { }
+  constructor() {
+  }
 
 
   ngOnInit(): void {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (changes && changes.members && changes.members.currentValue) {
+      this.memberList = changes.members.currentValue.map(member => member.name).join(', ')
+    }
     console.log(changes);
   }
 }
