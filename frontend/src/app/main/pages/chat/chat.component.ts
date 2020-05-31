@@ -52,6 +52,18 @@ export class ChatComponent implements OnInit {
 
     this.storyService.getStory(storyId).subscribe(story => {
       this.story = story;
+      for (const key in this.story.events) {
+        if (this.story.events[key].timestamp && !this.story.events[key].timestamp.includes('PM') && !this.story.events[key].timestamp.includes('AM')) {
+          let hours = Number(this.story.events[key].timestamp.substring(0 , 2));
+          const minutes = this.story.events[key].timestamp.substring(3 , 5);
+          if (hours > 12) {
+            hours = hours - 12;
+            this.story.events[key].timestamp = `${hours}:${minutes} PM`;
+          } else {
+            this.story.events[key].timestamp = `${hours}:${minutes} AM`;
+          }
+        }
+      }
       this.members = story.characters;
     });
 
