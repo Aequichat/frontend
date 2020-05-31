@@ -52,7 +52,7 @@ export class StoryService {
    * Emits the next value for the openStory observable
    * @param storyId story id
    */
-  openStory(storyId: string) {
+  openStory(storyId?: string) {
     this.openedStory.next(storyId);
   }
 }

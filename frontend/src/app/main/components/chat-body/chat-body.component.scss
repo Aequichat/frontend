@@ -5,12 +5,13 @@
   flex-direction: column-reverse;
   justify-content: flex-end;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 21px 4px -20px inset;
+  background-color: transparent;
 }
 
 .div-chat-box {
   height: 100%;
   overflow-y: auto;
-  background: #fff;
+  background-image: url('/assets/images/background.png');
 }
 
 /*** Scrollbar styles ***/
