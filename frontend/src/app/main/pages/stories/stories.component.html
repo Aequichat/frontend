@@ -4,7 +4,7 @@
     *ngFor="let story of storyService.stories">
     <aequi-story-card
         [story]="story"
-        [currentStory]="storyService.openedStory"
+        [currentStory]="storyService.openedStory | async"
         [locked]="progressService.progress?.storyId != story.id"
         (click)="openStory(story)"
     ></aequi-story-card>

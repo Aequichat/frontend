@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { StoryService } from 'src/app/shared/services/story.service';
 
 @Component({
@@ -9,10 +8,15 @@ import { StoryService } from 'src/app/shared/services/story.service';
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, public storyService: StoryService) { }
+  constructor(public storyService: StoryService) { }
 
   ngOnInit(): void {
-    this.storyService.openedStory = this.route.snapshot.params.id;
+  }
+
+  @HostListener('window:popstate', ['$event'])
+  onPopState(_event) {
+    // TODO: Save progress.
+    this.storyService.openStory(null);
   }
 
 }
