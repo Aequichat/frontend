@@ -18,15 +18,17 @@ export class UserGuard implements CanActivateChild, CanActivate {
   }
 
   private validateUser(): boolean | UrlTree {
-    if (this.authService.user) {
+    if (this.authService.getUser()) {
       return true;
     }
 
     const userString = localStorage.getItem('user');
+
     try {
       const user = JSON.parse(userString);
+
       if (user) {
-        this.authService.user = user;
+        this.authService.setUser(user);
         return true;
       }
 

@@ -12,10 +12,13 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from '../app-routing.module';
 import { ChatActionComponent } from './components/chat-action/chat-action.component';
 import { ChatBodyComponent } from './components/chat-body/chat-body.component';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
+import { ChatImageComponent } from './components/chat-image.component';
 import { ChatOptionsComponent } from './components/chat-options/chat-options.component';
 import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end-history-wrapper.component';
 import { EndHistoryComponent } from './components/end-history/end-history.component';
@@ -26,8 +29,6 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { IntroductionComponent } from './pages/introduction/introduction.component';
 import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 
 @NgModule({
   declarations: [
@@ -45,6 +46,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ChatOptionsComponent,
     ChatActionComponent,
   ],
+
+
+@NgModule({
   imports: [
     AppRoutingModule,
     CommonModule,
@@ -60,10 +64,26 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatProgressSpinnerModule,
     BrowserAnimationsModule,
-    MatChipsModule
+    MatChipsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     TitleCasePipe
+  ],
+  declarations: [
+    LoginComponent,
+    StoryCardComponent,
+    StoriesComponent,
+    ChatTemplateComponent,
+    ChatComponent,
+    IntroductionComponent,
+    TimeTransitionComponent,
+    EndHistoryComponent,
+    EndHistoryWrapperComponent,
+    ChatHeaderComponent,
+    ChatBodyComponent,
+    ChatOptionsComponent,
+    ChatImageComponent
   ]
 })
 export class MainModule { }
