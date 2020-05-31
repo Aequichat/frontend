@@ -39,7 +39,7 @@ export class StoryService {
     );
   }
 
-  openStory(storyId: string) {
+  openStory(storyId?: string) {
     this.openedStory.next(storyId);
   }
 }
