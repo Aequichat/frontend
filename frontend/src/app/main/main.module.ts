@@ -25,6 +25,7 @@ import { ChatHeaderComponent } from './components/chat-header/chat-header.compon
 import { ChatBodyComponent } from './components/chat-body/chat-body.component';
 import { ChatOptionsComponent } from './components/chat-options/chat-options.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AppRoutingModule } from '../app-routing.module';
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    BrowserAnimationsModule,
   ]
 })
 export class MainModule { }
