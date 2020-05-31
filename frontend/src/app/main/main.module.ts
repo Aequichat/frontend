@@ -11,6 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { StoryCardComponent } from './components/story-card/story-card.component';
 import { TimeTransitionComponent } from './components/time-transition/time-transition.component';
@@ -55,6 +56,7 @@ import { AppRoutingModule } from '../app-routing.module';
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatChipsModule
   ]
 })
 export class MainModule { }

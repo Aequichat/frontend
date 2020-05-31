@@ -1,1 +1,16 @@
-<p>chat-options works!</p>
+<div class="chat-options">
+  <ng-container *ngIf="options.length; then optionsContent; else buttonContent">
+  </ng-container>
+</div>
+
+<ng-template #optionsContent>
+  <mat-chip-list>
+    <mat-chip class="option" color="primary" selected *ngFor="let option of options" (click)="selectOption(option.child, option.value)">
+      {{ option.label }}
+    </mat-chip>
+  </mat-chip-list>
+</ng-template>
+
+<ng-template #buttonContent>
+  <button mat-raised-button color="primary" class="continue-button">Continuar</button>
+</ng-template>
