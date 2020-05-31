@@ -4,6 +4,9 @@ import { Progress } from 'src/app/shared/models/progress.model';
 import { Event } from 'src/app/shared/models/event.model';
 import { fadeInOut, fadeIn } from 'src/app/shared/animations';
 
+import {Option} from 'src/app/shared/models/option.model';
+
+
 @Component({
   selector: 'aequi-chat-body',
   templateUrl: './chat-body.component.html',
@@ -437,8 +440,31 @@ export class ChatBodyComponent implements OnInit {
     this.processEvent(this.currentEventKey);
   }
 
+  public handleClickedOption(option: Option) {
+    if (!option) {
+      console.log('Continuar....', this.currentEvent)
+      this.processEvent(this.currentEvent.child);
+      return;
+    }
+
+    console.log('Opción escogida...', option);
+
+    const timestamp = this.currentEvent.timestamp;
+
+    this.currentEvent = {
+      type: 'text',
+      from: 'user',
+      value: option.label,
+      timestamp,
+    };
+
+    this.addMessage();
+    this.processEvent(option.child);
+  }
+
   public processEvent(currentEventKey, fadeOut = false) {
-    this.currentEvent = this.conversation.events[currentEventKey];
+    this.currentEventKey = currentEventKey;
+    this.currentEvent = this.conversation.events[this.currentEventKey];
 
     console.log(this.currentEvent);
 
@@ -473,6 +499,9 @@ export class ChatBodyComponent implements OnInit {
   private addMessage() {
     this.messages.unshift(this.currentEvent);
     this.progress.selectedPath.push(this.currentEvent);
+    setTimeout(() => {
+      this.scrollToBottom();
+    }, 1)
   }
 
   public scrollToBottom() {
