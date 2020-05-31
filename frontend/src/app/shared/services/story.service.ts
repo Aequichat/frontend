@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Story } from '../models/story.model';
+import { Observable, of, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -10,8 +10,8 @@ import { tap } from 'rxjs/operators';
 })
 export class StoryService {
 
-  private stories: Story[] = [];
-  public openedStory: string;
+  public stories: Story[] = [];
+  public openedStory: Subject<string> = new Subject();
 
   constructor(private http: HttpClient) { }
 
@@ -38,5 +38,9 @@ export class StoryService {
         this.stories[storyFoundIndex] = story;
       })
     )
+  }
+
+  openStory(storyId: string) {
+    this.openedStory.next(storyId);
   }
 }

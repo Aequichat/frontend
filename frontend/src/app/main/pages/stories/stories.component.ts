@@ -33,7 +33,7 @@ export class StoriesComponent extends Subscribable implements OnInit {
         alert('No puedes abrir otra historia sin terminar la anterior.');
         return;
     }
-    this.router.navigateByUrl('/chats/' + story.id);
+    this.storyService.openStory(story.id);
   }
 
 }
