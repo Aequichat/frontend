@@ -27,6 +27,7 @@ export class EndHistoryWrapperComponent implements OnInit {
     });
     dialog.afterClosed().subscribe(() => {
       this.router.navigateByUrl('/chats');
+      this.storyService.cleanStory();
       this.storyService.openStory(null);
     })
   }

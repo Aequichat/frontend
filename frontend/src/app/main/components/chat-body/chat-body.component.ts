@@ -68,7 +68,16 @@ export class ChatBodyComponent implements OnInit {
   public handleClickedOption(option: Option) {
     if (!option) {
       console.log('Continuar....', this.currentEvent)
-      this.processEvent(this.currentEvent.child);
+      if(this.currentEvent.condition &&
+        this.currentEvent.condition.length > 0) {
+          for(const condition of this.currentEvent.condition) {
+            if (this.progress.parameters[condition.label] === condition.value && condition.child) {
+              this.processEvent(condition.child);
+              return;
+            }
+          }
+        }
+        this.processEvent(this.currentEvent.child);
       return;
     }
 
@@ -101,9 +110,9 @@ export class ChatBodyComponent implements OnInit {
     this.currentEvent = this.conversation.events[this.currentEventKey];
 
     console.log(this.currentEvent);
-
+    let matchCondition
     if (this.currentEvent.condition) {
-      const matchCondition = this.currentEvent.condition.some(condition => this.progress.parameters[condition.label] === condition.value);
+      matchCondition = this.currentEvent.condition.some(condition => this.progress.parameters[condition.label] === condition.value);
       if (!matchCondition) {
         this.processEvent(this.currentEvent.child);
         return;
@@ -158,9 +167,14 @@ export class ChatBodyComponent implements OnInit {
         completedStories: this.progress.completedStories
       };
 
-      if (!this.progress.completedStories.some(story => story === this.conversation.id)) {
+      if (!this.progress.completedStories.some(story => story === this.conversation.id) && this.currentEvent.goodEnd) {
         this.progress.completedStories.push(this.conversation.id);
       }
+    }
+    if (this.currentEvent.options && this.currentEvent.options.length > 0) {
+      setTimeout(() => {
+        this.scrollToBottom();
+      }, 100);
     }
 
     this.progressService.saveProgress(this.progress).subscribe(response => {

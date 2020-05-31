@@ -16,7 +16,8 @@ async function addUser(req, res) {
         if (!userData.username || !userData.email || !userData.password) {
             return res.status(400).send({ message: 'Datos incompletos' });
         }
-
+        userData.username = String(userData.username).toLowerCase()
+        userData.email = String(userData.email).toLowerCase()
         const db = await connection.getConnection();
         const usersCollection = db.collection('users');
         const user = await usersCollection.findOne(

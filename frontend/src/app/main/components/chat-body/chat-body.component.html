@@ -22,7 +22,7 @@
         </div>
       </div>
       <div *ngIf="message.type == 'action'" [@fadeIn]>
-        <aequi-chat-action [chatName]="name" [action]="message"></aequi-chat-action>
+        <aequi-chat-action [chatName]="name" [action]="message" [conversation]="conversation"></aequi-chat-action>
       </div>
     </ng-container>
   </div>
