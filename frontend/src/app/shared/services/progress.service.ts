@@ -14,6 +14,6 @@ export class ProgressService {
   constructor(private http: HttpClient) {}
 
   getProgress(userId: string): Observable<Progress> {
-    return this.http.get<Progress>(`${environment.API_URL}progress/${userId}`);
+    return this.http.get<Progress>(`${environment.API_URL}/progress/${userId}`);
   }
 }

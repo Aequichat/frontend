@@ -15,6 +15,6 @@ export class StoryService {
   constructor(private http: HttpClient) { }
 
   getStories(): Observable<Story[]> {
-    return this.http.get<Story[]>(environment.API_URL + 'story');
+    return this.http.get<Story[]>(environment.API_URL + '/story');
   }
 }
