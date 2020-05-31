@@ -53,7 +53,7 @@ export class AuthService {
   logout(): void {
     delete this.user;
     localStorage.removeItem('user');
-    this.storyService.openStory(null);
+    this.storyService.openStory();
     this.router.navigate(['/']);
   }
 
