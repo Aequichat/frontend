@@ -1,10 +1,10 @@
-import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
-import { Story } from 'src/app/shared/models/story.model';
-import { Progress } from 'src/app/shared/models/progress.model';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { fadeIn, fadeInOut } from 'src/app/shared/animations';
 import { Event } from 'src/app/shared/models/event.model';
-import { fadeInOut, fadeIn } from 'src/app/shared/animations';
+import { Option } from 'src/app/shared/models/option.model';
+import { Progress } from 'src/app/shared/models/progress.model';
+import { Story } from 'src/app/shared/models/story.model';
 
-import {Option} from 'src/app/shared/models/option.model';
 
 
 @Component({
@@ -501,7 +501,7 @@ export class ChatBodyComponent implements OnInit {
     this.progress.selectedPath.push(this.currentEvent);
     setTimeout(() => {
       this.scrollToBottom();
-    }, 1)
+    }, 1);
   }
 
   public scrollToBottom() {

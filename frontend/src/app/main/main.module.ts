@@ -15,6 +15,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from '../app-routing.module';
+import { ChatActionComponent } from './components/chat-action/chat-action.component';
 import { ChatBodyComponent } from './components/chat-body/chat-body.component';
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
 import { ChatImageComponent } from './components/chat-image/chat-image.component';
@@ -64,7 +65,8 @@ import { StoriesComponent } from './pages/stories/stories.component';
     ChatHeaderComponent,
     ChatBodyComponent,
     ChatOptionsComponent,
-    ChatImageComponent
+    ChatImageComponent,
+    ChatActionComponent
   ]
 })
 export class MainModule { }
