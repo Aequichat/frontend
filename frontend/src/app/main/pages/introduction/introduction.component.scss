@@ -5,12 +5,11 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  background-color: white;
 }
 
 .introduction-image {
-  border-radius: 100%;
-  width: 250px;
-  height: 250px;
+  width: 50%;
 }
 
 .introduction-text {
