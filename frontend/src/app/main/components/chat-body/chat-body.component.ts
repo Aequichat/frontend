@@ -1,3 +1,4 @@
+import { TitleCasePipe } from '@angular/common';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { fadeIn, fadeInOut } from 'src/app/shared/animations';
 import { Character } from 'src/app/shared/models/character.model';
@@ -30,7 +31,7 @@ export class ChatBodyComponent implements OnInit {
   public progress: Progress;
   public currentEvent: Event;
 
-  constructor(private authService: AuthService, private progressService: ProgressService) {}
+  constructor(private authService: AuthService, private progressService: ProgressService, private titleCase: TitleCasePipe) {}
 
   ngOnInit(): void {
     this.progressService.getProgress(this.authService.getUser().username).subscribe(progress => {
@@ -77,7 +78,7 @@ export class ChatBodyComponent implements OnInit {
             }
           }
         }
-        this.processEvent(this.currentEvent.child);
+      this.processEvent(this.currentEvent.child);
       return;
     }
 
@@ -110,7 +111,7 @@ export class ChatBodyComponent implements OnInit {
     this.currentEvent = this.conversation.events[this.currentEventKey];
 
     console.log(this.currentEvent);
-    let matchCondition
+    let matchCondition;
     if (this.currentEvent.condition) {
       matchCondition = this.currentEvent.condition.some(condition => this.progress.parameters[condition.label] === condition.value);
       if (!matchCondition) {
@@ -185,7 +186,8 @@ export class ChatBodyComponent implements OnInit {
   }
 
   private addMessage(timeout = 1) {
-    this.currentEvent.value = this.currentEvent.value?.replace('[user]', this.authService.getUser().username);
+    const username =  this.titleCase.transform(this.authService.getUser().username);
+    this.currentEvent.value = this.currentEvent.value?.replace('[user]', username);
     this.messages.unshift(this.currentEvent);
     this.progress.selectedPath.unshift(this.currentEvent);
     setTimeout(() => {
