@@ -181,6 +181,40 @@ a{color:inherit;text-decoration:none}
   align-items: center;
 };
 
+.logo-img {
+	width: 50px;
+}
+
+.logo-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+.logo-name {
+	font-size: 29px;
+    font-weight: bolder;
+    letter-spacing: 0.8px;
+	color: #3f51b5;
+	padding-left: 10px;
+	letter-spacing: 1.5px;
+}
+
+.name-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-description {
+	font-size: 11px;
+    text-align: right;
+    letter-spacing: 1.3px;
+    font-weight: bold;
+    padding-left: 35px;
+}
+
+
 // MATERIAL
 
 
@@ -246,7 +280,16 @@ mat-error {
 
   .login-html {
     padding-right: 20px;
-    padding-left: 20px;
+	padding-left: 20px;
+	padding-top: 50px;
+  }
+
+  .logo-name {
+	font-size: 26px;
+  }
+
+  .logo-img {
+	width: 45px;
   }
 }
 
