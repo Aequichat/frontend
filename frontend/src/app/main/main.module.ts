@@ -1,7 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,7 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AppRoutingModule } from '../app-routing.module';
+
 import { StoryCardComponent } from './components/story-card/story-card.component';
 import { TimeTransitionComponent } from './components/time-transition/time-transition.component';
 import { ChatTemplateComponent } from './pages/chat-template/chat-template.component';
@@ -25,6 +24,7 @@ import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end
 import { ChatHeaderComponent } from './components/chat-header/chat-header.component';
 import { ChatBodyComponent } from './components/chat-body/chat-body.component';
 import { ChatOptionsComponent } from './components/chat-options/chat-options.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -39,9 +39,10 @@ import { ChatOptionsComponent } from './components/chat-options/chat-options.com
     EndHistoryWrapperComponent,
     ChatHeaderComponent,
     ChatBodyComponent,
-    ChatOptionsComponent
+    ChatOptionsComponent,
   ],
   imports: [
+    AppRoutingModule,
     CommonModule,
     FlexLayoutModule,
     LayoutModule,
@@ -54,11 +55,6 @@ import { ChatOptionsComponent } from './components/chat-options/chat-options.com
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatDialogModule,
-    AppRoutingModule
-  ],
-  entryComponents: [
-    EndHistoryComponent
   ]
 })
 export class MainModule { }

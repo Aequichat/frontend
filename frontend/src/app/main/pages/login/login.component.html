@@ -23,7 +23,7 @@
               </mat-form-field>
             </div>
             <div class="group center-div-content">
-              <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button">Ingresar</button>
+              <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button" [disabled]="!userForm.valid">Ingresar</button>
               <mat-spinner *ngIf="isLoading" [diameter]="40" [color]="'white'"></mat-spinner>
             </div>
           </div>
@@ -64,12 +64,11 @@
               </mat-form-field>
             </div>
             <div class="group center-div-content">
-              <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button">Registrarme</button>
+              <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button" [disabled]="!signUpForm.valid">Registrarme</button>
               <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>
             </div>
           </form>
         </div>
-
       </div>
     </div>
   </div>
