@@ -1,7 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,7 +15,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { StoryCardComponent } from './components/story-card/story-card.component';
 import { TimeTransitionComponent } from './components/time-transition/time-transition.component';
 import { ChatTemplateComponent } from './pages/chat-template/chat-template.component';
-import { ChatComponent } from './pages/chat-template/components/chat/chat.component';
+import { ChatComponent } from './pages/chat/chat.component';
 import { IntroductionComponent } from './pages/introduction/introduction.component';
 import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
@@ -44,8 +43,9 @@ import { AppRoutingModule } from '../app-routing.module';
     LoginComponent,
     StoryCardComponent,
     StoriesComponent,
+    ChatComponent,
     ChatTemplateComponent,
-    ChatComponent, IntroductionComponent,
+    IntroductionComponent,
     TimeTransitionComponent,
     EndHistoryComponent,
     EndHistoryWrapperComponent
