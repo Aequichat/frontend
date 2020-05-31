@@ -8,6 +8,7 @@ import { Character } from 'src/app/shared/models/character.model';
 
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ProgressService } from 'src/app/shared/services/progress.service';
+import { skip } from 'rxjs/operators';
 
 @Component({
   selector: 'aequi-chat-body',
@@ -76,6 +77,7 @@ export class ChatBodyComponent implements OnInit {
 
     const timestamp = this.currentEvent.timestamp;
     const parameter = this.currentEvent.parameter;
+    const skipText = this.currentEvent.skipText;
 
     if (parameter) {
       this.progress.parameters[parameter] = option.value;
@@ -88,7 +90,10 @@ export class ChatBodyComponent implements OnInit {
       timestamp,
     };
 
-    this.addMessage();
+    if (!skipText) {
+      this.addMessage();
+    }
+
     this.processEvent(option.child);
   }
 
@@ -151,7 +156,11 @@ export class ChatBodyComponent implements OnInit {
         currentEvent: null,
         parameters: null,
         selectedPath: null,
-        completedStories: null,
+        completedStories: this.progress.completedStories
+      };
+
+      if (!this.progress.completedStories.some(story => story === this.conversation.id)) {
+        this.progress.completedStories.push(this.conversation.id);
       }
     }
 
