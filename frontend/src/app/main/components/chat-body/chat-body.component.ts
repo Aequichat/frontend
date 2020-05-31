@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'aequi-chat-body',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatBodyComponent implements OnInit {
 
-  constructor() { }
+  @Input() name: string;
+
+  constructor() {}
 
   ngOnInit(): void {
   }
