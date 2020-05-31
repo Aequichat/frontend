@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { StoryService } from 'src/app/shared/services/story.service';
 
 import { Option } from 'src/app/shared/models/option.model';
 
@@ -10,7 +12,7 @@ import { Option } from 'src/app/shared/models/option.model';
 export class ChatComponent implements OnInit {
   tempOptions: Option[];
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, public storyService: StoryService) { }
 
   ngOnInit(): void {
     this.tempOptions = [
@@ -34,7 +36,7 @@ export class ChatComponent implements OnInit {
         child: 'child',
         value: null
       },
-    ]
+    ];
   }
 
 }

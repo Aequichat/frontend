@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Story } from 'src/app/shared/models/story.model';
 
 @Component({
@@ -11,15 +10,11 @@ export class StoryCardComponent implements OnInit {
 
   @Input() story: Story;
   @Input() locked: boolean;
+  @Input() currentStory: string;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit(): void {
     // this.locked = true;
   }
-
-  openStory(): void {
-
-  }
-
 }
