@@ -13,6 +13,10 @@ export class ProgressService {
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Returns the story progress of the user with the id provided
+   * @param userId user id
+   */
   getProgress(userId: string): Observable<Progress> {
     return this.http.get<Progress>(`${environment.API_URL}/progress/${userId}`);
   }
