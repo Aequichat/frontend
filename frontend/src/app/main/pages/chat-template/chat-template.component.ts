@@ -1,8 +1,9 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, takeUntil } from 'rxjs/operators';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { filter, takeUntil } from 'rxjs/operators';
 import { ProgressService } from 'src/app/shared/services/progress.service';
+import { StoryService } from 'src/app/shared/services/story.service';
 import { Subscribable } from 'src/app/shared/utils/subscribable';
 
 @Component({
@@ -12,17 +13,23 @@ import { Subscribable } from 'src/app/shared/utils/subscribable';
 })
 export class ChatTemplateComponent extends Subscribable implements OnInit {
 
-  public isMobile: boolean;
-  public selectedChat: string;
-  public showChatList: Observable<boolean>;
-  public showChat: Observable<boolean>;
+  public showChatList: boolean;
+  public showChat: boolean;
+  private isMobile: boolean;
+  private currentStory: string;
 
-  constructor(private breakpointObserver: BreakpointObserver, private progressService: ProgressService) {
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private progressService: ProgressService,
+    private storyService: StoryService,
+    private router: Router,
+    private cdr: ChangeDetectorRef) {
     super();
   }
 
   ngOnInit(): void {
     this.observeResponsive();
+    this.observeChats();
     this.getProgress();
   }
 
@@ -33,10 +40,33 @@ export class ChatTemplateComponent extends Subscribable implements OnInit {
   }
 
   private observeResponsive(): void {
-    this.showChatList = this.breakpointObserver.observe(['(max-width: 599px)'])
-      .pipe(map(mobile => !mobile.matches || (mobile.matches && !this.selectedChat)));
-    this.showChat = this.breakpointObserver.observe(['(max-width: 599px)'])
-      .pipe(map(mobile => !mobile.matches || (mobile.matches && this.selectedChat !== undefined)));
+    this.breakpointObserver.observe(['(max-width: 599px)'])
+      .pipe(takeUntil(this.destroyed))
+      .subscribe(mobile => {
+        this.isMobile = mobile.matches;
+        this.updateVisibility();
+      });
   }
 
+  private updateVisibility(): void {
+    this.showChatList = !this.isMobile || (this.isMobile && !this.currentStory);
+    this.showChat = !this.isMobile || (this.isMobile && this.currentStory !== undefined);
+    this.cdr.detectChanges();
+  }
+
+  private observeChats(): void {
+    this.storyService.openedStory.pipe(
+      filter(story => story !== undefined),
+      takeUntil(this.destroyed)
+    ).subscribe(story => {
+      if (story) {
+        this.router.navigateByUrl('/chats/' + story);
+      }
+      else {
+        this.router.navigateByUrl('/chats');
+      }
+      this.currentStory = story;
+      this.updateVisibility();
+    });
+  }
 }
