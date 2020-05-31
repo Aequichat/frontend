@@ -5,7 +5,7 @@
         <img [src]="story.icon" [alt]="story.name" class="chat-img" />
     </div>
     <div class="content-container">
-        <span class="story-name">{{ story.name }}</span>
+        <span class="story-name">{{ story.chatName }}</span>
         <span class="story-description" *ngIf="locked else notLocked">Historia bloqueada</span>
         <ng-template #notLocked>
             <span class="story-description" *ngIf="currentStory == story.id; else startStory">Continuar...</span>
