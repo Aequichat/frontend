@@ -1,38 +1,27 @@
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
-<p>chat-body works!</p>
+<div class="div-chat-box" id="div-chat-box">
+  <div id="chat-box-main" class="chat-box-main">
+    <div class="chat-message-bottom" #bottom></div>
+    <ng-container id="messages" *ngFor="let message of messages">
+      <div class="msg">
+        <div *ngIf="message.type == 'text'" class="bubble" [ngClass]="message.from !== 'user' ? 'left' : 'alt'" [@fadeIn]>
+          <div class="txt">
+            <span class="message">
+                <div [innerHTML]="message.value"></div>
+            </span>
+          </div>
+        </div>
+        <div *ngIf="message.type == 'image'" class="bubble bubble-image" [ngClass]="message.from !== 'user' ? 'left' : 'alt'" [@fadeIn]>
+          <div class="img">
+            <img [src]="message.value" class="image-message">
+          </div>
+        </div>
+      </div>
+      <div *ngIf="message.type == 'action'" [@fadeIn]>
+        <aequi-chat-action [chatName]="name" [action]="message"></aequi-chat-action>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<aequi-time-transition *ngIf="showFadeIn !== undefined" [fadeIn]="showFadeIn" [message]="currentEvent.value"></aequi-time-transition>
+<aequi-chat-options *ngIf="showFadeIn !== true" [options]="currentEvent.options" (selectedOption)="handleClickedOption($event)"></aequi-chat-options>

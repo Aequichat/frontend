@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {Option} from 'src/app/shared/models/option.model';
 
 @Component({
   selector: 'aequi-chat-options',
@@ -6,8 +7,12 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./chat-options.component.scss']
 })
 export class ChatOptionsComponent {
-  @Input() options: string[];
 
-  selectOption(child: string, value: any) {
+  @Input() options: Option[];
+
+  @Output() selectedOption = new EventEmitter<Option>();
+
+  public selectOption(option?: Option) {
+    this.selectedOption.emit(option);
   }
 }

@@ -4,12 +4,13 @@ import { Option } from './option.model';
 
 export interface Event {
     type: EventType;
-    child: string;
+    child?: string;
     value?: string;
     from?: string;
     to?: string;
-    timestamp?: Date;
+    timestamp?: string;
     condition?: Condition[];
     subtype?: EventSubtype;
     options?: Option[];
+    parameter?: string;
 }
