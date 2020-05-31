@@ -17,7 +17,15 @@ export class ProgressService {
    * Returns the story progress of the user with the id provided
    * @param userId user id
    */
-  getProgress(userId: string): Observable<Progress> {
-    return this.http.get<Progress>(`${environment.API_URL}/progress/${userId}`);
+  getProgress(username: string): Observable<Progress> {
+    return this.http.get<Progress>(`${environment.API_URL}/progress/${username}`);
+  }
+
+  /**
+   * Saves the story progress of the user.
+   * @param progress object.
+   */
+  saveProgress(progress: Progress): Observable<Progress> {
+    return this.http.post<Progress>(`${environment.API_URL}/progress`, progress);
   }
 }

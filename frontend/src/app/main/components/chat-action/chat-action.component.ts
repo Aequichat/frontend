@@ -37,7 +37,7 @@ export class ChatActionComponent implements OnInit {
     if (this.action.to === 'user') {
       message += ' te ';
     }
-    message += 'ha añadido';
+    message += ' ha añadido';
     if (this.action.to !== 'user') {
       message += ` a ${this.titlecasePipe.transform(this.action.to)}.`;
     } else {

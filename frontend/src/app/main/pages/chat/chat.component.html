@@ -5,5 +5,5 @@
     [members]="members">
   </aequi-chat-header>
 
-  <aequi-chat-body [name]="story.chatName" (membersChanged)="updateMembers($event)"></aequi-chat-body>
+  <aequi-chat-body [conversation]="story" [name]="story.chatName" (membersChanged)="updateMembers($event)"></aequi-chat-body>
 </div>

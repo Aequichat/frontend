@@ -1,3 +1,4 @@
+<ng-container *ngIf="progress" >
 <div class="div-chat-box" id="div-chat-box">
   <div id="chat-box-main" class="chat-box-main">
     <div class="chat-message-bottom" #bottom></div>
@@ -25,3 +26,5 @@
 
 <aequi-time-transition *ngIf="showFadeIn !== undefined" [fadeIn]="showFadeIn" [message]="currentEvent.value"></aequi-time-transition>
 <aequi-chat-options *ngIf="showFadeIn !== true" [options]="currentEvent.options" (selectedOption)="handleClickedOption($event)"></aequi-chat-options>
+<aequi-end-history-wrapper *ngIf="currentEvent.type === 'end'" [emoji]="currentEvent.emoji" [color]="currentEvent.color" [message]="currentEvent.message"></aequi-end-history-wrapper>
+</ng-container>
