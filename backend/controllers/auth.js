@@ -7,7 +7,7 @@ const connection = require('../config/db');
  */
 async function login(req, res) {
     try {
-        const { username, password } = req.body;
+        let { username, password } = req.body;
 
         if (!username || !password) {
             return res.status(400).send({ message: 'Datos incompletos' });
