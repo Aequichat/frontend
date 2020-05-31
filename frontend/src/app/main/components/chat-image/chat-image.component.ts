@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -7,6 +7,16 @@ import { MatDialogRef, MatDialog } from '@angular/material/dialog';
   styleUrls: ['./chat-image.component.scss']
 })
 export class ChatImageComponent implements OnInit {
+
+  @Input() imageUrl: string;
+
+  @Input() left: boolean;
+
+  @Input() name: string;
+
+  @Input() date: string;
+
+  @Input() color: string;
 
   @ViewChild('fullImage', {static: false}) fullImageRef: ElementRef;
 
