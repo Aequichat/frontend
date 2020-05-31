@@ -1,10 +1,18 @@
-<div class="msg" (click)="openImage()">
-  <div class="bubble bubble-image left">
-    <div class="img">
-      <img [src]="imageUrl" class="image-message">
+<!-- <div class="msg-main">
+  <div class="msg"> -->
+    <div class="bubble bubble-image" [ngClass]="left ? 'left' : 'alt'">
+      <div *ngIf="left" class="chat-message-metadata chat-message-name" [style.color]="color" [ngClass]="left ? 'received' : 'sent'">
+        {{name}}
+      </div>
+      <div (click)="openImage()" class="img">
+        <img [src]="imageUrl" class="image-message">
+      </div>
+      <div class="chat-message-date chat-message-metadata" [ngClass]="left ? 'received' : 'sent'">
+        {{date}}
+      </div>
     </div>
-  </div>
-</div>
+  <!-- </div>
+</div> -->
 
 <ng-template #fullImage>
   <div class="close-button-container">

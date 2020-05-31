@@ -4,18 +4,20 @@
     <div class="chat-message-bottom" #bottom></div>
     <ng-container id="messages" *ngFor="let message of messages">
       <div class="msg">
+        <div *ngIf="message.from !== 'user' && message.type == 'text'" class="chat-message-metadata chat-message-name" [style.color]="conversation.characters[message.from].color" [ngClass]="message.from !== 'user' ? 'received' : 'sent'">
+          {{message.from | titlecase}}
+        </div>
         <div *ngIf="message.type == 'text'" class="bubble" [ngClass]="message.from !== 'user' ? 'left' : 'alt'" [@fadeIn]>
           <div class="txt">
             <span class="message">
                 <div [innerHTML]="message.value"></div>
             </span>
           </div>
-        </div>
-        <div *ngIf="message.type == 'image'" class="bubble bubble-image" [ngClass]="message.from !== 'user' ? 'left' : 'alt'" [@fadeIn]>
-          <div class="img">
-            <img [src]="message.value" class="image-message">
+          <div *ngIf="message.type == 'text'" class="chat-message-date chat-message-metadata" [ngClass]="message.from !== 'user' ? 'received' : 'sent'">
+            {{message.timestamp}} PM
           </div>
         </div>
+        <aequi-chat-image *ngIf="message.type == 'image'" [imageUrl]="message.value" [date]="message.timestamp" [name]="conversation.characters[message.from].name" [left]="message.from !== 'user'" [color]="conversation.characters[message.from].color"></aequi-chat-image>
       </div>
       <div *ngIf="message.type == 'action'" [@fadeIn]>
         <aequi-chat-action [chatName]="name" [action]="message"></aequi-chat-action>

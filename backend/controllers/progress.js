@@ -10,7 +10,7 @@ const connection = require('../config/db');
 async function getProgress(req, res) {
     try {
         const db = await connection.getConnection();
-        const progress = await db.collection('progress').findOne({ userId: Number(req.params.userId) }, { projection: { _id: 0 } });
+        const progress = await db.collection('progress').findOne({ username: req.params.username }, { projection: { _id: 0 } });
 
         if (!progress) {
             return res.status(200).send({ message: 'Aún no existe progreso disponible' });
@@ -31,8 +31,8 @@ async function createOrUpdateProgress(req, res) {
     try {
         const db = await connection.getConnection();
         debug(JSON.stringify(req.body));
-        debug(req.body.userId);
-        const progress = await db.collection('progress').findOneAndUpdate({ userId: Number(req.body.userId) }, { $set: req.body }, { upsert: true, returnOriginal: false });
+        debug(req.body.username);
+        const progress = await db.collection('progress').findOneAndUpdate({ username: req.body.username }, { $set: req.body }, { upsert: true, returnOriginal: false });
 
         return res.status(200).send(progress.value);
     } catch (error) {
