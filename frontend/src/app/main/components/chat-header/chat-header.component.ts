@@ -28,6 +28,5 @@ export class ChatHeaderComponent implements OnInit, OnChanges {
 
       this.memberList = membersKeys.map(key => members[key].name).join(', ')
     }
-    console.log(changes);
   }
 }
