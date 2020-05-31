@@ -159,7 +159,7 @@ export class ChatBodyComponent implements OnInit {
         completedStories: this.progress.completedStories
       };
 
-      if (!this.progress.completedStories.some(story => story === this.conversation.id)) {
+      if (!this.progress.completedStories.some(story => story === this.conversation.id) && this.currentEvent.goodEnd) {
         this.progress.completedStories.push(this.conversation.id);
       }
     }
