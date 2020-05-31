@@ -1,0 +1,237 @@
+.chat-box-main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 21px 4px -20px inset;
+  background-color: transparent;
+}
+
+.div-chat-box {
+  height: 100%;
+  overflow-y: auto;
+  background-image: url('/assets/images/background.png');
+}
+
+/*** Scrollbar styles ***/
+/* Customize website's scrollbar like Mac OS
+Not supports in Firefox and IE */
+
+/* total width */
+::-webkit-scrollbar {
+  background-color:#fff;
+  width:16px
+}
+
+/* background of the scrollbar except button or resizer */
+::-webkit-scrollbar-track {
+  background-color:#fff
+}
+
+/* scrollbar itself */
+::-webkit-scrollbar-thumb {
+  background-color:#babac0;
+  border-radius:16px;
+  border:5px solid #fff
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color:#a0a0a5;
+  border:4px solid #f4f4f4
+}
+
+/* set button(top and bottom of the scrollbar) */
+::-webkit-scrollbar-button {display:none}
+
+/* Very small devices (Phones, 415px and down)*/
+@media (max-width: 415px) {
+
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) {
+
+}
+
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+
+}
+
+/*** Chat bubbles styles ***/
+.msg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.msg .bubble {
+  float: left;
+  max-width: 75%;
+  width: auto;
+  height: auto;
+  display: block;
+  background: #ebebeb;
+  position: relative;
+  margin: 0px 0 3px 10px;
+  border-radius: 0.5em;
+  word-break: break-word;
+}
+
+.msg .bubble:hover{
+  background: #929292;
+}
+
+.msg .bubble.bubble-image {
+  float: left;
+  max-width: 75%;
+  width: auto;
+  height: auto;
+  display: block;
+  background: #ebebeb;
+  position: relative;
+  margin: 10px 0 3px 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.msg .bubble.alt {
+  margin: 10px 10px 3px 0px;
+  // background: #eaeceed6;
+  background: #4769eb;
+  float: right;
+}
+.msg .bubble.left {
+  border: solid 1.5px #eaeceed6;
+  background: white;
+}
+.msg .bubble.follow {
+  margin: 2px 0 3px 10px;
+}
+.msg .bubble.altfollow {
+  margin: 2px 25px 3px 0px;
+  background: #DCF8C6;
+  float: right;
+}
+.msg .bubble .txt {
+  padding: 8px 0 0 0;
+  width: 100%;
+}
+
+.msg .bubble .img {
+  width: 100%;
+}
+
+.msg .bubble .txt .name {
+  font-weight: 600;
+  font-size: 14px;
+  display: inline-table;
+  padding: 0 0 0 15px;
+  margin: 0 0 4px 0;
+  color: #3498db;
+}
+.msg .bubble .txt .name span {
+  font-weight: normal;
+  color: #b3b3b3;
+  overflow: hidden;
+}
+.msg .bubble .txt .name.alt {
+  color: #2ecc51;
+}
+
+.alt .message {
+  color: white !important;
+}
+.msg .bubble .txt .message {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 15px 0 15px;
+  margin: auto;
+  color: #2b2b2b;
+  display: table;
+}
+
+.message {
+  white-space: pre-line;
+}
+
+.msg .bubble .img .image-message {
+  font-size: 14px;
+  font-weight: 500;
+  margin: auto;
+  color: #2b2b2b;
+  display: table;
+  max-width: 200px;
+  border-radius: 3px;
+  max-height: 200px;
+}
+
+.msg .bubble .txt .timestamp {
+  font-size: 11px;
+  margin: auto;
+  padding: 0 15px 0 0;
+  display: table;
+  float: right;
+  position: relative;
+  text-transform: uppercase;
+  color: #999;
+}
+.msg .bubble .bubble-arrow {
+  position: absolute;
+  float: left;
+  left: -11px;
+  top: 0px;
+}
+.msg .bubble .bubble-arrow.alt {
+  bottom: 20px;
+  left: auto;
+  right: 4px;
+  float: right;
+}
+.msg .bubble .bubble-arrow:after {
+  content: "";
+  position: absolute;
+  border-top: 15px solid #ebebeb;
+  border-left: 15px solid transparent;
+  border-radius: 4px 0 0 0px;
+  width: 0;
+  height: 0;
+}
+.msg .bubble .bubble-arrow.alt:after {
+  border-top: 15px solid #DCF8C6;
+  transform: scaleX(-1);
+}
+
+.chat-message-date {
+  font-size: 10px;
+  color: #8D898D;
+  text-align: right;
+  margin-right: 5px;
+  margin-top: -8px !important;
+}
+
+.chat-message-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: #8D898D;
+}
+
+.received.chat-message-metadata {
+  margin-left: 13px;
+  margin-bottom: -2px;
+}
+
+.sent.chat-message-metadata {
+  text-align: right;
+  color: white;
+}
+@media only screen and (max-width: 450px) {
+  .container {
+    width: 100%;
+  }
+  .timestamp {
+    display: none;
+    color: red;
+  }
+}

@@ -1,0 +1,9 @@
+<div class="chat" *ngIf="story">
+  <aequi-chat-header
+    [imageUrl]="story.icon"
+    [name]="story.chatName"
+    [members]="members">
+  </aequi-chat-header>
+
+  <aequi-chat-body [conversation]="story" [name]="story.chatName" (membersChanged)="updateMembers($event)"></aequi-chat-body>
+</div>

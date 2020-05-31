@@ -1,0 +1,26 @@
+<div class="msg-main">
+  <div class="msg">
+    <div class="bubble bubble-image" [ngClass]="left ? 'left' : 'alt'">
+      <div *ngIf="left" class="chat-message-metadata chat-message-name" [style.color]="color" [ngClass]="left ? 'received' : 'sent'">
+        {{name}}
+      </div>
+      <div (click)="openImage()" class="img">
+        <img [src]="imageUrl" class="image-message">
+      </div>
+      <div class="chat-message-date chat-message-metadata" [ngClass]="left ? 'received' : 'sent'">
+        {{date}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #fullImage>
+  <div class="close-button-container">
+    <button (click)="closeDialog()" mat-mini-fab class="close-button cdk-focused cdk-program-focused" color="primary">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div fxLayout="row">
+    <img [src]="imageUrl" class="dialog-image">
+  </div>
+</ng-template>

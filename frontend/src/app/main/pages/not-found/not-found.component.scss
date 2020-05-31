@@ -1,0 +1,87 @@
+.not-found-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+}
+
+.left-side {
+    width: 55%
+}
+
+.right-side {
+    width: 45%;
+}
+
+.not-found-text {
+    font-size: 91px;
+    display: block;
+    height: 67px;
+}
+
+.not-found-img {
+    width: 80px;
+    padding-right: 15px;
+}
+
+.people-img {
+    width: 100%;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    font-size: 32px;
+    color: #a9775c;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.left-image {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.left-text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.description {
+    font-size: 19px;
+}
+
+.bottom-container {
+    display: flex;
+}
+
+.bottom-text {
+    margin: auto;
+    color: #a9775c;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 4px;
+    padding-right: 10px;
+}
+
+.home-link {
+    margin-top: 10px;
+    color: #4769eb;
+    font-size: 21px;
+    text-decoration: none;
+    display: flex;
+}
+
+mat-icon {
+    padding-right: 5px;
+}

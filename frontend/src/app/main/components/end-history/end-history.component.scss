@@ -1,0 +1,34 @@
+main {
+  position: relative;
+  padding: 50px;
+  text-align: center;
+  display: grid;
+  height: 70vh;
+  max-width: 500px;
+
+  label.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: white;
+    cursor: pointer;
+  }
+
+  section {
+    margin: auto;
+
+    p {
+      color: white;
+      margin: 12px;
+      margin-top: 25px;
+      font-size: 25px;
+    }
+
+    label {
+      text-align: center;
+      font-size: 60px;
+      width: 100%;
+    }
+  }
+
+}

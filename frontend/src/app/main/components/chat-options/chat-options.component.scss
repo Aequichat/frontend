@@ -1,0 +1,57 @@
+$primary-color: #388e3c;
+$secondary-color: #c8e6c9;
+
+.chat-options {
+  padding: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-height: 45px;
+  transition: max-height 0.5s ease;
+  border-top: 1px solid rgba(0,0,0,.12);
+
+  &--full-height {
+    max-height: 100%;
+    transition: max-height 0.5s ease;
+  }
+
+  .option {
+    padding: 5px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: $primary-color;
+    background: $secondary-color;
+    max-width: max-content;
+    margin: 5px;
+
+    &:hover {
+      color: white;
+      background: $primary-color;
+    }
+  }
+
+  .continue-button {
+    padding: 8px 24px;
+    border: 1.5px solid $primary-color;
+    color: $primary-color;
+    border-radius: 30px;
+    background: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    span {
+      margin-left: 10px;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &:hover {
+      color: white;
+      background: $primary-color;
+    }
+  }
+}

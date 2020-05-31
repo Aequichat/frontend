@@ -1,0 +1,17 @@
+<div class="chat-options" [ngClass]="{'chat-options--full-height': options && options.length}">
+  <ng-container *ngIf="options && options.length; then optionsContent; else buttonContent">
+  </ng-container>
+</div>
+
+<ng-template #optionsContent>
+    <div class="option" *ngFor="let option of options" (click)="selectOption(option)">
+      <div [innerHTML]="option.label"></div>
+    </div>
+</ng-template>
+
+<ng-template #buttonContent>
+  <button color="primary" class="continue-button" (click)="selectOption()">
+    <mat-icon>send</mat-icon>
+    <span>Continuar</span>
+  </button>
+</ng-template>

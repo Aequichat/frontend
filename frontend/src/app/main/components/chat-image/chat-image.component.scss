@@ -1,0 +1,152 @@
+.msg-main {
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+  overflow: auto;
+}
+
+.msg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.msg .bubble {
+  float: left;
+  max-width: 75%;
+  width: auto;
+  height: auto;
+  display: block;
+  background: #ebebeb;
+  position: relative;
+  margin: 10px 0 3px 10px;
+  border-radius: 1.5em;
+  word-break: break-word;
+}
+
+.msg .bubble:hover{
+  background: #929292;
+}
+
+.msg .bubble.bubble-image {
+  float: left;
+  max-width: 75%;
+  width: auto;
+  height: auto;
+  display: block;
+  background: #ebebeb;
+  position: relative;
+  margin: 10px 0 3px 10px;
+  padding: 3px 3px 0px 3px;
+  border-radius: 5px;
+}
+
+.msg .bubble.alt {
+  margin: 10px 10px 3px 0px;
+  background: #4769eb;
+  float: right;
+}
+
+.msg .bubble.left {
+  border: solid 1.5px #eaeceeeb;
+  background: white;
+  padding: 0px 3px !important;
+}
+
+.msg .bubble .img {
+  width: 100%;
+}
+
+.msg .bubble .img .image-message {
+  font-size: 14px;
+  font-weight: 500;
+  margin: auto;
+  color: #2b2b2b;
+  display: table;
+  max-width: 200px;
+  border-radius: 3px;
+  max-height: 200px;
+}
+
+.img:hover {
+  cursor: pointer;
+}
+
+.chat-message-date {
+  font-size: 10px;
+  color: #8D898D;
+  text-align: right;
+}
+
+.chat-message-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: #8D898D;
+}
+
+.received.chat-message-metadata {
+  margin-left: 3px;
+}
+
+.sent.chat-message-metadata {
+  text-align: right;
+  padding-right: 10px;
+}
+
+/* Start Dialog styles*/
+::ng-deep.mat-dialog-container {
+  padding: 0px !important;
+}
+
+::ng-deep.cdk-overlay-dark-backdrop {
+  background: rgba(0,0,0,.8);
+}
+
+::ng-deep.cdk-overlay-pane {
+  max-width: 100vw !important;
+}
+
+.dialog-image {
+  position: absolute;
+  max-height: 90vh !important;
+  max-width: 90%;
+  display: table;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+
+::ng-deep .mat-dialog-container {
+  box-shadow: none;
+  background: none;
+}
+
+.close-button-container {
+  position: relative;
+  z-index: 10;
+}
+
+.close-button-container button:hover {
+  background-color: #3f51b5;
+  color: white !important;
+}
+
+.close-button-container button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+
+.close-button {
+  color: black;
+  background-color: white;
+  outline: 0 !important;
+}
+
+/* End Dialog Styles*/
