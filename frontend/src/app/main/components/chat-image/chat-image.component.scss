@@ -2,7 +2,6 @@
   flex: 1;
   flex-direction: column;
   width: 100%;
-  background: #fff;
   display: flex;
   overflow: auto;
 }
@@ -81,7 +80,7 @@
 }
 
 .chat-message-name {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: bold;
   color: #8D898D;
 }

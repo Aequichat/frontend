@@ -120,8 +120,12 @@ export class ChatBodyComponent implements OnInit {
       this.addMessage();
     }
 
-    if (this.currentEvent.type === 'text' || this.currentEvent.type === 'image') {
+    if (this.currentEvent.type === 'text') {
       this.addMessage();
+    }
+
+    if (this.currentEvent.type === 'image') {
+      this.addMessage(500);
     }
 
     // Executes the next events until the a fadeIn event is found.
@@ -137,13 +141,13 @@ export class ChatBodyComponent implements OnInit {
     });
   }
 
-  private addMessage() {
+  private addMessage(timeout = 1) {
     this.currentEvent.value = this.currentEvent.value?.replace('[user]', this.authService.getUser().username);
     this.messages.unshift(this.currentEvent);
     this.progress.selectedPath.unshift(this.currentEvent);
     setTimeout(() => {
       this.scrollToBottom();
-    }, 1);
+    }, timeout);
   }
 
   private scrollToBottom() {
