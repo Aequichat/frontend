@@ -22,6 +22,9 @@ export class ChatComponent implements OnInit {
     this.storyService.getStory(storyId).subscribe(story => {
       this.story = story;
     });
+    if (storyId) {
+      this.storyService.openStory(storyId);
+    }
   }
 
   @HostListener('window:popstate', ['$event'])

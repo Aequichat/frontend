@@ -1,6 +1,6 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { ProgressService } from 'src/app/shared/services/progress.service';
 import { StoryService } from 'src/app/shared/services/story.service';
@@ -23,7 +23,6 @@ export class ChatTemplateComponent extends Subscribable implements OnInit {
     private progressService: ProgressService,
     private storyService: StoryService,
     private router: Router,
-    private route: ActivatedRoute,
     private cdr: ChangeDetectorRef) {
     super();
   }
@@ -32,10 +31,6 @@ export class ChatTemplateComponent extends Subscribable implements OnInit {
     this.observeResponsive();
     this.observeChats();
     this.getProgress();
-    const openedChat = this.route.snapshot.params.id;
-    if (openedChat) {
-      this.storyService.openStory(openedChat);
-    }
   }
 
   private getProgress(): void {
@@ -63,6 +58,7 @@ export class ChatTemplateComponent extends Subscribable implements OnInit {
     this.storyService.openedStory.pipe(
       takeUntil(this.destroyed)
     ).subscribe(story => {
+      console.log('current story', story);
       this.router.navigateByUrl('/chats/' + story);
       this.currentStory = story;
       this.updateVisibility();
