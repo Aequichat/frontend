@@ -10,19 +10,21 @@ export class LoginGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) { }
 
   canActivate(): boolean | UrlTree {
-    if (this.authService.user) {
+    if (this.authService.getUser()) {
       return this.goToChats();
     }
 
     const userString = localStorage.getItem('user');
+
     try {
       const user = JSON.parse(userString);
+
       if (user) {
-        this.authService.user = user;
+        this.authService.setUser(user);
         return this.goToChats();
       }
-      return true;
 
+      return true;
     }
     catch (error) {
       localStorage.removeItem('user');

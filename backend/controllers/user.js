@@ -14,7 +14,7 @@ async function addUser(req, res) {
         };
 
         if (!userData.username || !userData.email || !userData.password) {
-            return res.status(402).send({ message: 'Params missing' });
+            return res.status(400).send({ message: 'Datos incompletos' });
         }
 
         const db = await connection.getConnection();
@@ -24,14 +24,14 @@ async function addUser(req, res) {
         );
 
         if (user) {
-            return res.status(200).send({ message: 'User already exists' });
+            return res.status(403).send({ message: 'Usuario ya existe' });
         }
 
         await usersCollection.insertOne(userData);
 
-        return res.status(200).send({ message: 'User registered successful' });
+        return res.status(200).send({ message: 'Usuario registrado correctamente!', user: userData });
     } catch (error) {
-        return res.status(500).send({ message: error });
+        return res.status(500).send(error);
     }
 }
 
