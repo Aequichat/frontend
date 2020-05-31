@@ -1,28 +1,33 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { takeUntil } from 'rxjs/operators';
 import { Character } from 'src/app/shared/models/character.model';
+import { Option } from 'src/app/shared/models/option.model';
+import { Progress } from 'src/app/shared/models/progress.model';
 import { Story } from 'src/app/shared/models/story.model';
 import { StoryService } from 'src/app/shared/services/story.service';
+import { Subscribable } from 'src/app/shared/utils/subscribable';
 
-import { Option } from 'src/app/shared/models/option.model';
-import { ProgressService } from 'src/app/shared/services/progress.service';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { Progress } from 'src/app/shared/models/progress.model';
 
 @Component({
   selector: 'aequi-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent extends Subscribable implements OnInit {
   tempOptions: Option[];
 
   members: {[name: string]: Character};
   story: Story;
   progress: Progress;
 
-  constructor(private route: ActivatedRoute,
-    public storyService: StoryService) { }
+  constructor(
+    private route: ActivatedRoute,
+    public storyService: StoryService,
+    private toastr: ToastrService) {
+      super();
+    }
 
   ngOnInit(): void {
     this.tempOptions = [
@@ -50,9 +55,13 @@ export class ChatComponent implements OnInit {
 
     const storyId = this.route.snapshot.params.id;
 
-    this.storyService.getStory(storyId).subscribe(story => {
+    this.storyService.getStory(storyId)
+    .pipe(takeUntil(this.destroyed))
+    .subscribe(story => {
       this.story = story;
       this.members = story.characters;
+    }, error => {
+      this.toastr.error(error.error.message);
     });
 
     if (storyId) {
@@ -66,7 +75,6 @@ export class ChatComponent implements OnInit {
 
   @HostListener('window:popstate', ['$event'])
   onPopState(_event) {
-    // TODO: Save progress.
     this.storyService.openStory(null);
   }
 
