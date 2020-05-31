@@ -1,11 +1,16 @@
+.msg-main {
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  overflow: auto;
+}
+
 .msg {
   width: 100%;
   height: auto;
   display: block;
-}
-
-.msg:hover {
-  cursor: pointer;
 }
 
 .msg .bubble {
@@ -34,7 +39,7 @@
   background: #ebebeb;
   position: relative;
   margin: 10px 0 3px 10px;
-  padding: 5px;
+  padding: 3px 3px 0px 3px;
   border-radius: 5px;
 }
 
@@ -45,8 +50,9 @@
 }
 
 .msg .bubble.left {
-  border: solid 2px #eaeceed6;
+  border: solid 1.5px #eaeceeeb;
   background: white;
+  padding: 0px 3px !important;
 }
 
 .msg .bubble .img {
@@ -62,6 +68,31 @@
   max-width: 200px;
   border-radius: 3px;
   max-height: 200px;
+}
+
+.img:hover {
+  cursor: pointer;
+}
+
+.chat-message-date {
+  font-size: 10px;
+  color: #8D898D;
+  text-align: right;
+}
+
+.chat-message-name {
+  font-size: 11px;
+  font-weight: bold;
+  color: #8D898D;
+}
+
+.received.chat-message-metadata {
+  margin-left: 3px;
+}
+
+.sent.chat-message-metadata {
+  text-align: right;
+  padding-right: 10px;
 }
 
 /* Start Dialog styles*/
