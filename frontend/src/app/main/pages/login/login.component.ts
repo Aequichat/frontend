@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -16,12 +16,14 @@ export class LoginComponent implements OnInit {
   public userForm: FormGroup;
   public signUpForm: FormGroup;
   public isLoading: boolean;
+  public isPasswordRecovering: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
     ) {}
 
   ngOnInit(): void {
@@ -36,6 +38,12 @@ export class LoginComponent implements OnInit {
       repeatPassword: ['', Validators.required],
       newEmail: ['', [Validators.required, Validators.email]]
     };
+
+    this.activatedRoute.params.subscribe(params => {
+      if (params.id) {
+        this.isPasswordRecovering = true;
+      }
+    });
 
     this.userForm = this.formBuilder.group(userFormValidators);
 
