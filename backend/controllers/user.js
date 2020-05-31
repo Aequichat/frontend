@@ -29,7 +29,7 @@ async function addUser(req, res) {
 
         await usersCollection.insertOne(userData);
 
-        return res.status(200).send({ message: 'Usuario registrado correctamente!'});
+        return res.status(200).send({ message: 'Usuario registrado correctamente!', user: userData });
     } catch (error) {
         return res.status(500).send(error);
     }

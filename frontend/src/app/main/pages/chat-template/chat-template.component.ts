@@ -35,9 +35,14 @@ export class ChatTemplateComponent extends Subscribable implements OnInit {
     this.getProgress();
   }
 
+  logout(): void {
+    this.authService.logout();
+  }
+
   private getProgress(): void {
-    console.log(this.authService.user);
-    this.progressService.getProgress(this.authService.user._id)
+    const user = this.authService.getUser();
+
+    this.progressService.getProgress(user._id)
       .pipe(takeUntil(this.destroyed))
       .subscribe(progress => this.progressService.progress = progress);
   }
