@@ -1,3 +1,20 @@
-
-fdsjfsdfjdsfkldsjfksdfj
-fsdkfjsdklfjsdfj
+<div
+    class="story-container"
+    [ngClass]="{'locked-story': locked}"
+    (click)="openStory()">
+    <div class="image-container">
+        <img [src]="story.icon" [alt]="story.name" class="chat-img" />
+    </div>
+    <div class="content-container">
+        <span class="story-name">{{ story.name }}</span>
+        <span class="story-description">Historia acerca de...</span>
+    </div>
+    <div class="lock-container" *ngIf="locked">
+        <mat-icon
+            #tooltip="matTooltip"
+            (click)="tooltip.show()"
+            matTooltip="Tienes que terminar la historia que estás siguiendo para poder continuar con otra.">
+            lock
+        </mat-icon>
+    </div>
+</div>
