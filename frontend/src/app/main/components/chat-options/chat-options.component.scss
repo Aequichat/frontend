@@ -8,6 +8,7 @@ $secondary-color: #c8e6c9;
   justify-content: flex-end;
   max-height: 45px;
   transition: max-height 0.5s ease;
+  border-top: 1px solid rgba(0,0,0,.12);
 
   &--full-height {
     max-height: 100%;
