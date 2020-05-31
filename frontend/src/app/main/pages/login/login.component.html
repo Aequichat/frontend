@@ -9,7 +9,9 @@
             <div class="group">
               <mat-form-field appearance="fill" class='material-input'>
                 <mat-label>Usuario o correo</mat-label>
-                <input matInput formControlName="username">
+                <input style="display:none" type="text" name="fakeusernameremembered"/>
+                <input style="display:none" type="password" name="fakeusernameremembered"/>
+                <input matInput formControlName="username" autocomplete="new-password">
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 <mat-error>Este campo es requerido</mat-error>
               </mat-form-field>
@@ -17,7 +19,7 @@
             <div class="group">
               <mat-form-field appearance="fill" class='material-input'>
                 <mat-label>Contraseña</mat-label>
-                <input matInput type="password" formControlName="password">
+                <input matInput type="password" autocomplete="new-password" formControlName="password">
                 <mat-icon matSuffix>lock</mat-icon>
                 <mat-error>Este campo es requerido</mat-error>
               </mat-form-field>
@@ -34,7 +36,7 @@
             <div class="group">
               <mat-form-field appearance="fill" class='material-input'>
                 <mat-label>Usuario</mat-label>
-                <input matInput formControlName="newUsername">
+                <input matInput formControlName="newUsername" autocomplete="new-password">
                 <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                 <mat-error>Este campo es requerido</mat-error>
               </mat-form-field>
@@ -42,7 +44,7 @@
             <div class="group">
               <mat-form-field appearance="fill" class='material-input'>
                 <mat-label>Contraseña</mat-label>
-                <input matInput type="password" formControlName="newPassword">
+                <input matInput type="password" formControlName="newPassword" autocomplete="new-password">
                 <mat-icon matSuffix>lock</mat-icon>
                 <mat-error>Este campo es requerido</mat-error>
               </mat-form-field>
@@ -50,7 +52,7 @@
             <div class="group">
               <mat-form-field appearance="fill" class='material-input'>
                 <mat-label>Repetir contraseña</mat-label>
-                <input matInput type="password" formControlName="repeatPassword">
+                <input matInput type="password" formControlName="repeatPassword" autocomplete="new-password">
                 <mat-icon matSuffix>lock</mat-icon>
                 <mat-error>Este campo es requerido y debe coincidir con la contraseña</mat-error>
               </mat-form-field>
