@@ -1,7 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,7 +11,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AppRoutingModule } from '../app-routing.module';
+
 import { StoryCardComponent } from './components/story-card/story-card.component';
 import { TimeTransitionComponent } from './components/time-transition/time-transition.component';
 import { ChatTemplateComponent } from './pages/chat-template/chat-template.component';
@@ -22,20 +21,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
 import { EndHistoryComponent } from './components/end-history/end-history.component';
 import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end-history-wrapper.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    StoryCardComponent,
-    StoriesComponent,
-    ChatTemplateComponent,
-    ChatComponent,
-    IntroductionComponent,
-    TimeTransitionComponent,
-    EndHistoryComponent,
-    EndHistoryWrapperComponent
-  ],
   imports: [
+    AppRoutingModule,
     CommonModule,
     FlexLayoutModule,
     LayoutModule,
@@ -48,11 +38,17 @@ import { EndHistoryWrapperComponent } from './components/end-history-wrapper/end
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatDialogModule,
-    AppRoutingModule
   ],
-  entryComponents: [
-    EndHistoryComponent
-  ]
+  declarations: [
+    LoginComponent,
+    StoryCardComponent,
+    StoriesComponent,
+    ChatComponent,
+    ChatTemplateComponent,
+    IntroductionComponent,
+    TimeTransitionComponent,
+    EndHistoryComponent,
+    EndHistoryWrapperComponent
+  ],
 })
 export class MainModule { }
