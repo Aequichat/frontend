@@ -1,7 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { StoryService } from 'src/app/shared/services/story.service';
+import { Character } from 'src/app/shared/models/character.model';
 import { Story } from 'src/app/shared/models/story.model';
+import { StoryService } from 'src/app/shared/services/story.service';
 
 @Component({
   selector: 'aequi-chat',
@@ -10,6 +11,7 @@ import { Story } from 'src/app/shared/models/story.model';
 })
 export class ChatComponent implements OnInit {
 
+  members: Character[] = [];
   story: Story;
 
   constructor(private route: ActivatedRoute, public storyService: StoryService) { }
