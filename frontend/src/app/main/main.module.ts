@@ -27,6 +27,7 @@ import { ChatHeaderComponent } from './components/chat-header/chat-header.compon
 import { ChatBodyComponent } from './components/chat-body/chat-body.component';
 import { ChatOptionsComponent } from './components/chat-options/chat-options.component';
 import { AppRoutingModule } from '../app-routing.module';
+import { ChatImageComponent } from './components/chat-image/chat-image.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,8 @@ import { AppRoutingModule } from '../app-routing.module';
     ChatHeaderComponent,
     ChatBodyComponent,
     ChatOptionsComponent,
+    ChatImageComponent,
+    MatChipsModule
   ],
   imports: [
     AppRoutingModule,
@@ -57,7 +60,6 @@ import { AppRoutingModule } from '../app-routing.module';
     ReactiveFormsModule,
     MatButtonModule,
     MatProgressSpinnerModule,
-    MatChipsModule,
     ToastrModule.forRoot()
   ]
 })

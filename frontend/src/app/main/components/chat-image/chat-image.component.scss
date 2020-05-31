@@ -1,0 +1,118 @@
+.msg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.msg:hover {
+  cursor: pointer;
+}
+
+.msg .bubble {
+  float: left;
+  max-width: 75%;
+  width: auto;
+  height: auto;
+  display: block;
+  background: #ebebeb;
+  position: relative;
+  margin: 10px 0 3px 10px;
+  border-radius: 1.5em;
+  word-break: break-word;
+}
+
+.msg .bubble:hover{
+  background: #929292;
+}
+
+.msg .bubble.bubble-image {
+  float: left;
+  max-width: 75%;
+  width: auto;
+  height: auto;
+  display: block;
+  background: #ebebeb;
+  position: relative;
+  margin: 10px 0 3px 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.msg .bubble.alt {
+  margin: 10px 10px 3px 0px;
+  background: #eaeceed6;
+  float: right;
+}
+
+.msg .bubble.left {
+  border: solid 2px #eaeceed6;
+  background: white;
+}
+
+.msg .bubble .img {
+  width: 100%;
+}
+
+.msg .bubble .img .image-message {
+  font-size: 14px;
+  font-weight: 500;
+  margin: auto;
+  color: #2b2b2b;
+  display: table;
+  max-width: 200px;
+  border-radius: 3px;
+  max-height: 200px;
+}
+
+/* Start Dialog styles*/
+::ng-deep.mat-dialog-container {
+  padding: 0px !important;
+}
+
+::ng-deep.cdk-overlay-dark-backdrop {
+  background: rgba(0,0,0,.8);
+}
+
+::ng-deep.cdk-overlay-pane {
+  max-width: 100vw !important;
+}
+
+.dialog-image {
+  max-height: 90vh !important;
+  height: 90vh;
+  margin: 5vh auto;
+  display: table;
+  border-radius: 5px;
+}
+
+::ng-deep .mat-dialog-container {
+  box-shadow: none;
+  background: none;
+}
+
+.close-button-container {
+  position: relative;
+  z-index: 10;
+}
+
+.close-button-container button:hover {
+  background-color: #3f51b5;
+  color: white !important;
+}
+
+.close-button-container button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+
+.close-button {
+  color: black;
+  background-color: white;
+  outline: 0 !important;
+}
+
+/* End Dialog Styles*/
