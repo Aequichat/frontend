@@ -1,46 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { takeUntil } from 'rxjs/operators';
 import { StoryService } from 'src/app/shared/services/story.service';
+import { Subscribable } from 'src/app/shared/utils/subscribable';
 
 @Component({
   selector: 'aequi-stories',
   templateUrl: './stories.component.html',
   styleUrls: ['./stories.component.scss']
 })
-export class StoriesComponent implements OnInit {
+export class StoriesComponent extends Subscribable implements OnInit {
 
-  constructor(public storyService: StoryService) { }
-
-  ngOnInit(): void {
-    this.getServices();
+  constructor(public storyService: StoryService) {
+    super();
   }
 
-  getServices(): void {
-    this.storyService.stories = [
-      {
-        _id: '1',
-        name: 'Jesse',
-        icon: 'https://ak.picdn.net/shutterstock/videos/5118950/thumb/1.jpg',
-        characters: {
-          pedro: {
-            name: 'Pedro',
-            color: 'blue'
-          }
-        },
-        events: {}
-      },
-      {
-        _id: '2',
-        name: 'Jesse',
-        icon: 'https://ak.picdn.net/shutterstock/videos/5118950/thumb/1.jpg',
-        characters: {
-          pedro: {
-            name: 'Pedro',
-            color: 'blue'
-          }
-        },
-        events: {}
-      }
-    ];
+  ngOnInit(): void {
+    this.getStories();
+  }
+
+  getStories(): void {
+    this.storyService.getStories()
+      .pipe(takeUntil(this.destroyed))
+      .subscribe(stories => this.storyService.stories = stories);
   }
 
 }

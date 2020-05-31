@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,6 +16,7 @@ import { MainModule } from './main/main.module';
     AppComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     MainModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
