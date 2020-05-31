@@ -74,8 +74,8 @@ Not supports in Firefox and IE */
   display: block;
   background: #ebebeb;
   position: relative;
-  margin: 10px 0 3px 10px;
-  border-radius: 1.5em;
+  margin: 0px 0 3px 10px;
+  border-radius: 0.5em;
   word-break: break-word;
 }
 
@@ -98,11 +98,12 @@ Not supports in Firefox and IE */
 
 .msg .bubble.alt {
   margin: 10px 10px 3px 0px;
-  background: #eaeceed6;
+  // background: #eaeceed6;
+  background: #4769eb;
   float: right;
 }
 .msg .bubble.left {
-  border: solid 2px #eaeceed6;
+  border: solid 1.5px #eaeceed6;
   background: white;
 }
 .msg .bubble.follow {
@@ -114,7 +115,7 @@ Not supports in Firefox and IE */
   float: right;
 }
 .msg .bubble .txt {
-  padding: 8px 0 8px 0;
+  padding: 8px 0 0 0;
   width: 100%;
 }
 
@@ -137,6 +138,10 @@ Not supports in Firefox and IE */
 }
 .msg .bubble .txt .name.alt {
   color: #2ecc51;
+}
+
+.alt .message {
+  color: white !important;
 }
 .msg .bubble .txt .message {
   font-size: 14px;
@@ -196,6 +201,30 @@ Not supports in Firefox and IE */
 .msg .bubble .bubble-arrow.alt:after {
   border-top: 15px solid #DCF8C6;
   transform: scaleX(-1);
+}
+
+.chat-message-date {
+  font-size: 10px;
+  color: #8D898D;
+  text-align: right;
+  margin-right: 5px;
+  margin-top: -8px !important;
+}
+
+.chat-message-name {
+  font-size: 13px;
+  font-weight: bold;
+  color: #8D898D;
+}
+
+.received.chat-message-metadata {
+  margin-left: 13px;
+  margin-bottom: -2px;
+}
+
+.sent.chat-message-metadata {
+  text-align: right;
+  color: white;
 }
 @media only screen and (max-width: 450px) {
   .container {
