@@ -25,7 +25,7 @@
             (click)="tooltip.show()"
             *ngIf="story.pending; else lockedLock"
             matTooltip="La historia estará disponible próximamente.">
-            lock
+            lock_outline
         </mat-icon>
         <ng-template #lockedLock>
             <mat-icon
@@ -33,7 +33,7 @@
                 (click)="tooltip.show()"
                 *ngIf="locked"
                 matTooltip="Tienes que terminar la historia que estás siguiendo para poder continuar con otra.">
-                lock
+                lock_outline
             </mat-icon>
         </ng-template>
     </div>

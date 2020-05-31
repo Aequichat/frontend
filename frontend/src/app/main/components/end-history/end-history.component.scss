@@ -4,6 +4,7 @@ main {
   text-align: center;
   display: grid;
   height: 70vh;
+  max-width: 500px;
 
   label.close {
     position: absolute;
@@ -19,6 +20,8 @@ main {
     p {
       color: white;
       margin: 12px;
+      margin-top: 25px;
+      font-size: 25px;
     }
 
     label {

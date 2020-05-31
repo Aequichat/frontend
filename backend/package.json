@@ -37,6 +37,7 @@
         "debug": "^4.1.1",
         "express": "^4.17.1",
         "express-static-gzip": "^2.0.6",
-        "mongodb": "^3.5.8"
+        "mongodb": "^3.5.8",
+        "nodemailer": "^6.4.8"
     }
 }

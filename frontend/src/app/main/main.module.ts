@@ -29,6 +29,7 @@ import { ChatComponent } from './pages/chat/chat.component';
 import { IntroductionComponent } from './pages/introduction/introduction.component';
 import { LoginComponent } from './pages/login/login.component';
 import { StoriesComponent } from './pages/stories/stories.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -66,7 +67,8 @@ import { StoriesComponent } from './pages/stories/stories.component';
     ChatBodyComponent,
     ChatOptionsComponent,
     ChatImageComponent,
-    ChatActionComponent
+    ChatActionComponent,
+    NotFoundComponent
   ]
 })
 export class MainModule { }

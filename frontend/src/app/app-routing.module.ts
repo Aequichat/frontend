@@ -4,9 +4,9 @@ import { ChatTemplateComponent } from './main/pages/chat-template/chat-template.
 import { ChatComponent } from './main/pages/chat/chat.component';
 import { IntroductionComponent } from './main/pages/introduction/introduction.component';
 import { LoginComponent } from './main/pages/login/login.component';
+import { NotFoundComponent } from './main/pages/not-found/not-found.component';
 import { LoginGuard } from './shared/guards/login.guard';
 import { UserGuard } from './shared/guards/user.guard';
-
 
 const routes: Routes = [
   {
@@ -33,6 +33,10 @@ const routes: Routes = [
   {
     path: 'items',
     loadChildren: () => import('./administrator/administrator.module').then(m => m.AdministratorModule)
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 

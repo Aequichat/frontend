@@ -14,7 +14,7 @@
             </span>
           </div>
           <div *ngIf="message.type == 'text'" class="chat-message-date chat-message-metadata" [ngClass]="message.from !== 'user' ? 'received' : 'sent'">
-            {{message.timestamp}} PM
+            {{message.timestamp}}
           </div>
         </div>
         <div *ngIf="message.type == 'image'" [@fadeIn]>
