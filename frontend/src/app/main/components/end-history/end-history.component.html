@@ -1,0 +1,9 @@
+<main [style.background]="data.color || '#ffffff'">
+  <label class="close" (click)="close()">
+    <mat-icon>close</mat-icon>
+  </label>
+  <section>
+    <label>{{data.emoji}}</label>
+    <p>{{data.message}}</p>
+  </section>
+</main>

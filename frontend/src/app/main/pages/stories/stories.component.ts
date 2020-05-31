@@ -27,8 +27,20 @@ export class StoriesComponent implements OnInit {
           }
         },
         events: {}
+      },
+      {
+        _id: '2',
+        name: 'Jesse',
+        icon: 'https://ak.picdn.net/shutterstock/videos/5118950/thumb/1.jpg',
+        characters: {
+          pedro: {
+            name: 'Pedro',
+            color: 'blue'
+          }
+        },
+        events: {}
       }
-    ]
+    ];
   }
 
 }

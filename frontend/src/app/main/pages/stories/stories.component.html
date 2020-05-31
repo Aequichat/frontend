@@ -2,5 +2,5 @@
     fxLayout="column"
     class="stories-container"
     *ngFor="let story of storyService.stories">
-    <aequi-story-card></aequi-story-card>
+    <aequi-story-card [story]="story"></aequi-story-card>
 </div>

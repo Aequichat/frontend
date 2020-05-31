@@ -1,0 +1,58 @@
+.story-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    padding: 5px 10px;
+    border-bottom: 1px solid #c9c9c9;
+}
+
+.locked-story:hover {
+    cursor: not-allowed !important;
+}
+
+.story-container:hover {
+    cursor: pointer;
+    background-color: #eee;
+}
+
+.image-container {
+    min-width: 75px;
+    max-width: 75px;
+}
+
+.content-container {
+    min-width: calc(100% - 110px);
+}
+
+.lock-container {
+    min-width: 35px;
+    margin: auto;
+}
+
+.chat-img {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: contain;
+    padding: 0 5px;
+}
+
+.story-name {
+    margin: 0;
+    margin-top: 6px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    display: block;
+    font-size: 15px;
+}
+
+.story-description {
+    font-size: 11.5px;
+    color: #848484;
+    font-style: italic;
+}
+
+mat-icon {
+    color: #7f7f7f;
+    font-size: 23px;
+}

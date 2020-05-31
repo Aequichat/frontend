@@ -6,7 +6,7 @@
                 [opened]="showChatList | async">
                 <mat-toolbar class="mat-elevation-z2">
                     <img class="app-icon" src="assets/icons/icon.png" alt="Aequichat">
-                    <span>Aequichat</span>
+                    <span class="app-title">Aequichat</span>
                 </mat-toolbar>
                 <div class="stories-container">
                     <aequi-stories></aequi-stories>
@@ -14,7 +14,7 @@
             </mat-drawer>
             <mat-drawer-content
                 [ngStyle]="{'visibility': (showChat | async) ? 'visible' : 'hidden'}">
-                <router-outlet name="chat-outlet"></router-outlet>
+                <router-outlet></router-outlet>
             </mat-drawer-content>
         </mat-drawer-container>
     </div>
