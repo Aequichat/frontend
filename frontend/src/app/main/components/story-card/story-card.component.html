@@ -1,7 +1,6 @@
 <div
     class="story-container"
-    [ngClass]="{'locked-story': locked}"
-    (click)="openStory()">
+    [ngClass]="{'locked-story': locked, 'current-story': currentStory == story.id}">
     <div class="image-container">
         <img [src]="story.icon" [alt]="story.name" class="chat-img" />
     </div>
