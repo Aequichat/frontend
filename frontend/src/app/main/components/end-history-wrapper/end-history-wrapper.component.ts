@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { EndHistoryComponent } from '../../components/end-history/end-history.component';
 import { Router } from '@angular/router';
+import { StoryService } from 'src/app/shared/services/story.service';
 
 @Component({
   selector: 'aequi-end-history-wrapper',
@@ -13,7 +14,7 @@ export class EndHistoryWrapperComponent implements OnInit {
   @Input() color: string;
   @Input() message: string;
 
-  constructor(private dialog: MatDialog, private router: Router) { }
+  constructor(private dialog: MatDialog, private router: Router, private storyService: StoryService) { }
 
   ngOnInit(): void {
     const dialog = this.dialog.open(EndHistoryComponent, {
@@ -26,6 +27,7 @@ export class EndHistoryWrapperComponent implements OnInit {
     });
     dialog.afterClosed().subscribe(() => {
       this.router.navigateByUrl('/chats');
+      this.storyService.openStory(null);
     })
   }
 
