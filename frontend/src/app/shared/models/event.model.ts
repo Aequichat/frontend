@@ -11,5 +11,5 @@ export interface Event {
     timestamp?: Date;
     condition?: Condition[];
     subtype?: EventSubtype;
-    options?: Option[]
+    options?: Option[];
 }
