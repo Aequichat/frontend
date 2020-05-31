@@ -17,7 +17,9 @@
             {{message.timestamp}} PM
           </div>
         </div>
-        <aequi-chat-image *ngIf="message.type == 'image'" [imageUrl]="message.value" [date]="message.timestamp" [name]="conversation.characters[message.from].name" [left]="message.from !== 'user'" [color]="conversation.characters[message.from].color"></aequi-chat-image>
+        <div *ngIf="message.type == 'image'" [@fadeIn]>
+          <aequi-chat-image [imageUrl]="message.value" [date]="message.timestamp" [name]="conversation.characters[message.from].name" [left]="message.from !== 'user'" [color]="conversation.characters[message.from].color"></aequi-chat-image>
+        </div>
       </div>
       <div *ngIf="message.type == 'action'" [@fadeIn]>
         <aequi-chat-action [chatName]="name" [action]="message"></aequi-chat-action>

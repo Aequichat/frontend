@@ -37,7 +37,7 @@ export class ChatBodyComponent implements OnInit {
       this.progress = progress;
       let loadFirsTime: boolean;
 
-      if (!progress.username) {
+      if (!progress.currentEvent) {
         loadFirsTime = true;
         this.progress = {
           username: this.authService.getUser().username,
@@ -129,8 +129,12 @@ export class ChatBodyComponent implements OnInit {
       }
     }
 
-    if (this.currentEvent.type === 'text' || this.currentEvent.type === 'image') {
+    if (this.currentEvent.type === 'text') {
       this.addMessage();
+    }
+
+    if (this.currentEvent.type === 'image') {
+      this.addMessage(500);
     }
 
     // Executes the next events until the a fadeIn event is found.
@@ -139,6 +143,18 @@ export class ChatBodyComponent implements OnInit {
     }
 
     this.progress.currentEvent = this.currentEventKey;
+
+    if (this.currentEvent.type === 'end') {
+      this.progress = {
+        username: this.authService.getUser().username,
+        storyId: this.conversation.id,
+        currentEvent: null,
+        parameters: null,
+        selectedPath: null,
+        completedStories: null,
+      }
+    }
+
     this.progressService.saveProgress(this.progress).subscribe(response => {
       console.log(response);
     }, error => {
@@ -146,13 +162,13 @@ export class ChatBodyComponent implements OnInit {
     });
   }
 
-  private addMessage() {
+  private addMessage(timeout = 1) {
     this.currentEvent.value = this.currentEvent.value?.replace('[user]', this.authService.getUser().username);
     this.messages.unshift(this.currentEvent);
     this.progress.selectedPath.unshift(this.currentEvent);
     setTimeout(() => {
       this.scrollToBottom();
-    }, 1);
+    }, timeout);
   }
 
   private scrollToBottom() {
