@@ -1,8 +1,9 @@
-<div class="chat">
+<div class="chat" *ngIf="story">
   <aequi-chat-header
     [imageUrl]="story.icon"
     [name]="story.name"
     [members]="story.characters">
+  </aequi-chat-header>
 
   <aequi-chat-body></aequi-chat-body>
 
