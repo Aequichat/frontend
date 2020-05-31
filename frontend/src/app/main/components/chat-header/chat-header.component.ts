@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Character } from 'src/app/shared/models/character.model';
+import { StoryService } from 'src/app/shared/services/story.service';
 
 @Component({
   selector: 'aequi-chat-header',
@@ -14,7 +15,7 @@ export class ChatHeaderComponent implements OnInit, OnChanges {
 
   public memberList: string;
 
-  constructor() {
+  constructor(private storyService: StoryService) {
   }
 
 
@@ -28,5 +29,9 @@ export class ChatHeaderComponent implements OnInit, OnChanges {
 
       this.memberList = membersKeys.map(key => members[key].name).join(', ')
     }
+  }
+
+  public goBack(): void {
+    this.storyService.openStory(null);
   }
 }

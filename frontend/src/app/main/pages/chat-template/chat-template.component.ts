@@ -1,7 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 import { ProgressService } from 'src/app/shared/services/progress.service';
 import { StoryService } from 'src/app/shared/services/story.service';
 import { Subscribable } from 'src/app/shared/utils/subscribable';
@@ -56,13 +56,17 @@ export class ChatTemplateComponent extends Subscribable implements OnInit {
 
   private observeChats(): void {
     this.storyService.openedStory.pipe(
+      filter(story => story !== undefined),
       takeUntil(this.destroyed)
     ).subscribe(story => {
-      console.log('current story', story);
-      this.router.navigateByUrl('/chats/' + story);
+      if (story) {
+        this.router.navigateByUrl('/chats/' + story);
+      }
+      else {
+        this.router.navigateByUrl('/chats');
+      }
       this.currentStory = story;
       this.updateVisibility();
     });
   }
-
 }

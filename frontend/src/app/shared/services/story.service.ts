@@ -11,7 +11,7 @@ import { Story } from '../models/story.model';
 export class StoryService {
 
   public stories: Story[] = [];
-  public openedStory: BehaviorSubject<string> = new BehaviorSubject(null);
+  public openedStory: BehaviorSubject<string> = new BehaviorSubject(undefined);
 
   constructor(private http: HttpClient) { }
 
