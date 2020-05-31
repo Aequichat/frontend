@@ -14,7 +14,7 @@ import { Option } from 'src/app/shared/models/option.model';
 export class ChatComponent implements OnInit {
   tempOptions: Option[];
 
-  members: Character[] = [];
+  members: {[name: string]: Character};
   story: Story;
 
   constructor(private route: ActivatedRoute, public storyService: StoryService) { }
@@ -47,11 +47,16 @@ export class ChatComponent implements OnInit {
 
     this.storyService.getStory(storyId).subscribe(story => {
       this.story = story;
+      this.members = story.characters;
     });
 
     if (storyId) {
       this.storyService.openStory(storyId);
     }
+  }
+
+  updateMembers(members: {[name: string]: Character}) {
+    this.members = members;
   }
 
   @HostListener('window:popstate', ['$event'])

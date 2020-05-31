@@ -27,7 +27,7 @@ export class ChatHeaderComponent implements OnInit, OnChanges {
       const members = changes.members.currentValue;
       const membersKeys = Object.keys(changes.members.currentValue);
 
-      this.memberList = membersKeys.map(key => members[key].name).join(', ')
+      this.memberList = membersKeys.filter(key => members[key].active).map(key => members[key].name).join(', ')
     }
   }
 

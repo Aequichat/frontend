@@ -2,8 +2,8 @@
   <aequi-chat-header
     [imageUrl]="story.icon"
     [name]="story.chatName"
-    [members]="story.characters">
+    [members]="members">
   </aequi-chat-header>
 
-  <aequi-chat-body [name]="story.chatName"></aequi-chat-body>
+  <aequi-chat-body [name]="story.chatName" (membersChanged)="updateMembers($event)"></aequi-chat-body>
 </div>

@@ -1,9 +1,10 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { fadeIn, fadeInOut } from 'src/app/shared/animations';
 import { Event } from 'src/app/shared/models/event.model';
 import { Option } from 'src/app/shared/models/option.model';
 import { Progress } from 'src/app/shared/models/progress.model';
 import { Story } from 'src/app/shared/models/story.model';
+import { Character } from 'src/app/shared/models/character.model';
 
 
 
@@ -22,15 +23,18 @@ export class ChatBodyComponent implements OnInit {
     'characters': {
       'michael': {
         'name': 'Michael',
-        'color': '#35cd96'
+        'color': '#35cd96',
+        'active': true
       },
       'daniel': {
         'name': 'Daniel',
-        'color': '#91ab01'
+        'color': '#91ab01',
+        'active': true
       },
       'pedro': {
         'name': 'Pedro',
-        'color': '#ffa97a'
+        'color': '#ffa97a',
+        'active': true
       },
       'nicolas': {
         'name': 'Nicolas',
@@ -409,6 +413,7 @@ export class ChatBodyComponent implements OnInit {
   @ViewChild('bottom', {static: false}) bottom: ElementRef;
 
   @Input() name: string;
+  @Output() membersChanged: EventEmitter<{[name: string]: Character}> = new EventEmitter();
 
   public messages: Event[] = [];
   public currentEventKey = '0';
@@ -482,6 +487,13 @@ export class ChatBodyComponent implements OnInit {
 
     if (this.currentEvent.type === 'action') {
       this.addMessage();
+      if (this.currentEvent.subtype === 'add' || this.currentEvent.subtype === 'remove') {
+        const user = this.conversation.characters[this.currentEvent.to];
+        if (user) {
+          user.active = true;
+          this.membersChanged.emit(this.conversation.characters);
+        }
+      }
     }
 
     if (this.currentEvent.type === 'text' || this.currentEvent.type === 'image') {
