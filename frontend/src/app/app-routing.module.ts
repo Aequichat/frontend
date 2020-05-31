@@ -15,7 +15,7 @@ const routes: Routes = [
     canActivate: [LoginGuard]
   },
   {
-    path: 'recover/:id',
+    path: 'forgot/:id',
     component: LoginComponent,
     canActivate: [LoginGuard],
   },

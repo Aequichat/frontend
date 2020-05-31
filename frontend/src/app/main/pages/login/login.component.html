@@ -1,14 +1,17 @@
 <div class="content-wrapper" fxFlexFill>
   <div class="login-wrap">
     <div class="login-html">
-
-      <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab" *ngIf="isPasswordRecovering">Recuperar contraseña</label>
-      <ng-container *ngIf="!isPasswordRecovering">
-        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Ingresar</label>
+      <input id="tab-4" type="radio" name="tab" class="sign-in" checked>
+      <label for="tab-4" class="tab" *ngIf="isNewpasswordForm">Nueva contraseña</label>
+      <input id="tab-3" type="radio" name="tab" class="sign-in" checked><label for="tab-3" class="tab"
+        *ngIf="isEmailForm">Recuperar contraseña</label>
+      <ng-container *ngIf="!isNewpasswordForm && !isEmailForm">
+        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
+          class="tab">Ingresar</label>
         <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Registrarme</label>
       </ng-container>
       <div class="login-form">
-        <form [formGroup]="newPasswordForm" (ngSubmit)="changePassword()" *ngIf="isPasswordRecovering">
+        <form [formGroup]="newPasswordForm" (ngSubmit)="changePassword()" *ngIf="isNewpasswordForm">
           <div class="group">
             <mat-form-field appearance="fill" class='material-input'>
               <mat-label>Nueva contraseña</mat-label>
@@ -21,26 +24,44 @@
           <div class="group">
             <mat-form-field appearance="fill" class='material-input'>
               <mat-label>Repite tu contraseña</mat-label>
-              <input matInput type="password" autocomplete="new-password" formControlName="repitPassword">
+              <input matInput type="password" autocomplete="new-password" formControlName="repeatPassword">
               <mat-icon matSuffix>lock</mat-icon>
               <mat-error>Este campo es requerido</mat-error>
             </mat-form-field>
           </div>
 
           <div class="group center-div-content">
-            <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button" [disabled]="!newPasswordForm.valid">Cambiar contraseña</button>
+            <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button"
+              [disabled]="!newPasswordForm.valid">Cambiar contraseña</button>
             <mat-spinner *ngIf="isLoading" [diameter]="40" [color]="'white'"></mat-spinner>
           </div>
         </form>
 
-        <ng-container *ngIf="!isPasswordRecovering">
+        <form [formGroup]="emailForm" (ngSubmit)="sendRecoveryEmail()" *ngIf="isEmailForm">
+          <div class="group">
+            <mat-form-field appearance="fill" class='material-input'>
+              <mat-label>Correo electrónico</mat-label>
+              <input matInput formControlName="email">
+              <mat-icon matSuffix>alternate_email</mat-icon>
+              <mat-error>Email con formato (yo@correo.com) requerido</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="group center-div-content">
+            <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button"
+              [disabled]="!emailForm.valid">Enviar email</button>
+            <mat-spinner *ngIf="isLoading" [diameter]="40" [color]="'white'"></mat-spinner>
+          </div>
+        </form>
+
+        <ng-container *ngIf="!isNewpasswordForm && !isEmailForm">
           <form [formGroup]="userForm" (ngSubmit)="login()">
             <div class="sign-in-htm">
               <div class="group">
                 <mat-form-field appearance="fill" class='material-input'>
-                  <mat-label>Usuario o correo</mat-label>
-                  <input style="display:none" type="text" name="fakeusernameremembered"/>
-                  <input style="display:none" type="password" name="fakeusernameremembered"/>
+                  <mat-label>Usuario</mat-label>
+                  <input style="display:none" type="text" name="fakeusernameremembered" />
+                  <input style="display:none" type="password" name="fakeusernameremembered" />
                   <input matInput formControlName="username" autocomplete="new-password">
                   <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                   <mat-error>Este campo es requerido</mat-error>
@@ -55,9 +76,11 @@
                 </mat-form-field>
               </div>
               <div class="group center-div-content">
-                <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button" [disabled]="!userForm.valid">Ingresar</button>
-                <mat-spinner *ngIf="isLoading" [diameter]="40" [color]="'white'"></mat-spinner>
+                <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button"
+                  [disabled]="!userForm.valid">Ingresar</button>
+                  <mat-spinner *ngIf="isLoading" [diameter]="40" [color]="'white'"></mat-spinner>
               </div>
+              <a (click)="isEmailForm = true" class="recover-link">¿Has olvidado tu contraseña?</a>
             </div>
           </form>
 
@@ -96,7 +119,8 @@
                 </mat-form-field>
               </div>
               <div class="group center-div-content">
-                <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button" [disabled]="!signUpForm.valid">Registrarme</button>
+                <button *ngIf="!isLoading" mat-raised-button color="primary" class="material-button"
+                  [disabled]="!signUpForm.valid">Registrarme</button>
                 <mat-spinner *ngIf="isLoading" [diameter]="40"></mat-spinner>
               </div>
             </form>

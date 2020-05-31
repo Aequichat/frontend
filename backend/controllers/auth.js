@@ -24,7 +24,7 @@ async function login(req, res) {
         const user = await usersCollection.findOne({ username, password }, { projection: { password: 0 }});
 
         if (!user) {
-            return res.status(404).send({ message: 'Usuario o contraña no validos'});
+            return res.status(404).send({ message: 'Usuario o contraseña no validos'});
         }
 
         return res.status(200).send( user );
@@ -70,7 +70,7 @@ async function restorePassword(req, res) {
 
         await transporter.sendMail(mailOptions);
 
-        return res.status(200).send({ message: 'Te hemos eviado un correo a tu email para recuperar tu contraseña' })
+        return res.status(200).send({ message: 'Te hemos eviado un correo para recuperar tu contraseña' })
     } catch (error) {
         return res.status(500).send(error)
     }

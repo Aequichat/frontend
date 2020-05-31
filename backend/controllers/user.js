@@ -66,7 +66,7 @@ async function updateUser(req, res) {
 
         return res.status(200).send({ message: 'Contraseña actualizada correctamente', user: result.value });
     } catch (error) {
-        return res.status(500).send({ error: 'ID no valido' });
+        return res.status(500).send({ message: 'User no valido' });
     }
 }
 

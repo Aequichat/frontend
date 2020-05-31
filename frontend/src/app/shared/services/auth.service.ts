@@ -66,4 +66,12 @@ export class AuthService {
   register(username: string, email: string, password: string): Observable<string> {
     return this.httpClient.post<string>(`${this.apiUrl}/user`, { username, email, password});
   }
+
+  changePassword(id: string, password: string) {
+    return this.httpClient.put(`${this.apiUrl}/user`, { id, password});
+  }
+
+  sendRecoveryEmail(email: string) {
+    return this.httpClient.post(`${this.apiUrl}/forgot`, { email });
+  }
 }

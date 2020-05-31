@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, Form } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -15,8 +15,12 @@ import { User } from 'src/app/shared/models/user.model';
 export class LoginComponent implements OnInit {
   public userForm: FormGroup;
   public signUpForm: FormGroup;
+  public newPasswordForm: FormGroup;
+  public emailForm: FormGroup;
   public isLoading: boolean;
-  public isPasswordRecovering: boolean;
+  public isNewpasswordForm = false;
+  public isEmailForm = false;
+  public userId: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,7 +45,20 @@ export class LoginComponent implements OnInit {
 
     this.activatedRoute.params.subscribe(params => {
       if (params.id) {
-        this.isPasswordRecovering = true;
+        this.isNewpasswordForm = true;
+        this.userId = params.id;
+
+        const recoveringValidators = {
+          newPassword: ['', Validators.required],
+          repeatPassword: ['', Validators.required]
+        };
+
+        this.newPasswordForm = this.formBuilder.group(
+          recoveringValidators,
+          {
+            validators: [this.matchPasswords('newPassword', 'repeatPassword')]
+          }
+        );
       }
     });
 
@@ -53,6 +70,10 @@ export class LoginComponent implements OnInit {
         validators: [this.matchPasswords('newPassword', 'repeatPassword')]
       }
     );
+
+    this.emailForm = this.formBuilder.group({
+      email: ['', Validators.required]
+    });
   }
 
   public login(): void {
@@ -106,6 +127,31 @@ export class LoginComponent implements OnInit {
       } else {
         matchingControl.setErrors(null);
       }
-    }
+    };
+  }
+
+  changePassword() {
+    this.isLoading = true;
+    this.authService.changePassword(this.userId, this.newPasswordForm.value.newPassword).subscribe((response: any) => {
+      this.toastr.success(response.message);
+      this.isLoading = false;
+      this.router.navigate(['/']);
+    }, (error) => {
+      this.toastr.error(error.error.message);
+      this.isLoading = false;
+    });
+  }
+
+  sendRecoveryEmail() {
+    this.isLoading = true;
+    this.authService.sendRecoveryEmail(this.emailForm.value.email).subscribe((response: any) => {
+      this.toastr.success(response.message);
+      this.isEmailForm = false;
+      this.isLoading = false;
+    },
+    (error) => {
+      this.toastr.error(error.message);
+      this.isLoading = false;
+    });
   }
 }
