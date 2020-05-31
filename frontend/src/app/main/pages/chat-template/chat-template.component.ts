@@ -2,6 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { filter, takeUntil } from 'rxjs/operators';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { ProgressService } from 'src/app/shared/services/progress.service';
 import { StoryService } from 'src/app/shared/services/story.service';
 import { Subscribable } from 'src/app/shared/utils/subscribable';
@@ -19,6 +20,7 @@ export class ChatTemplateComponent extends Subscribable implements OnInit {
   private currentStory: string;
 
   constructor(
+    private authService: AuthService,
     private breakpointObserver: BreakpointObserver,
     private progressService: ProgressService,
     private storyService: StoryService,
@@ -34,7 +36,8 @@ export class ChatTemplateComponent extends Subscribable implements OnInit {
   }
 
   private getProgress(): void {
-    this.progressService.getProgress('1')
+    console.log(this.authService.user);
+    this.progressService.getProgress(this.authService.user._id)
       .pipe(takeUntil(this.destroyed))
       .subscribe(progress => this.progressService.progress = progress);
   }

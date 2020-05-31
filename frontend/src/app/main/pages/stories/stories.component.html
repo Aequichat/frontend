@@ -5,7 +5,7 @@
     <aequi-story-card
         [story]="story"
         [currentStory]="storyService.openedStory | async"
-        [locked]="progressService.progress?.storyId != story.id"
+        [locked]="progressService.progress?.storyId &&  progressService.progress?.storyId != story.id"
         (click)="openStory(story)"
     ></aequi-story-card>
 </div>
