@@ -3,7 +3,8 @@
         <mat-drawer-container class="side-container" fxFlexFill>
             <mat-drawer
                 mode="side"
-                [opened]="showChatList | async">
+                [opened]="showChatList"
+                disableClose="true">
                 <mat-toolbar class="mat-elevation-z2">
                     <img class="app-icon" src="assets/icons/icon.png" alt="Aequichat">
                     <span class="app-title">Aequichat</span>
@@ -13,7 +14,7 @@
                 </div>
             </mat-drawer>
             <mat-drawer-content
-                [ngStyle]="{'visibility': (showChat | async) ? 'visible' : 'hidden'}">
+                [ngStyle]="{'visibility': showChat ? 'visible' : 'hidden'}">
                 <router-outlet></router-outlet>
             </mat-drawer-content>
         </mat-drawer-container>

@@ -12,7 +12,7 @@ import { Subscribable } from 'src/app/shared/utils/subscribable';
   styleUrls: ['./stories.component.scss']
 })
 export class StoriesComponent extends Subscribable implements OnInit {
-
+  public stories: Story[] = [];
   constructor(public storyService: StoryService, public progressService: ProgressService, private router: Router) {
     super();
   }
@@ -24,16 +24,16 @@ export class StoriesComponent extends Subscribable implements OnInit {
   getStories(): void {
     this.storyService.getStories()
       .pipe(takeUntil(this.destroyed))
-      .subscribe(stories => this.storyService.stories = stories);
+      .subscribe(stories => this.stories = stories);
   }
 
   openStory(story: Story): void {
     const progress = this.progressService.progress;
-    if (progress &&  progress.storyId !== String(story.id)) {
+    if (progress?.storyId &&  progress?.storyId !== String(story.id)) {
         alert('No puedes abrir otra historia sin terminar la anterior.');
         return;
     }
-    this.router.navigateByUrl('/chats/' + story.id);
+    this.storyService.openStory(story.id);
   }
 
 }

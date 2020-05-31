@@ -4,16 +4,21 @@ import { ChatTemplateComponent } from './main/pages/chat-template/chat-template.
 import { ChatComponent } from './main/pages/chat/chat.component';
 import { IntroductionComponent } from './main/pages/introduction/introduction.component';
 import { LoginComponent } from './main/pages/login/login.component';
+import { LoginGuard } from './shared/guards/login.guard';
+import { UserGuard } from './shared/guards/user.guard';
 
 
 const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'chats',
     component: ChatTemplateComponent,
+    canActivate: [UserGuard],
+    canActivateChild: [UserGuard],
     children: [
       {
         path: ':id',

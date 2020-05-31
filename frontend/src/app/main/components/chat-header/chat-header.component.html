@@ -1,11 +1,14 @@
-<main>
+<main class="mat-elevation-z2">
+  <div class="back-container" (click)="goBack()">
+    <mat-icon>navigate_before</mat-icon>
+  </div>
   <img [src]="imageUrl">
   <section>
-    <label>
+    <p>
       {{name}}
-    </label>
-    <label>
+    </p>
+    <p>
       {{memberList}}
-    </label>
+    </p>
   </section>
 </main>

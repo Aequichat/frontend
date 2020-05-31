@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { Story } from 'src/app/shared/models/story.model';
 import { Progress } from 'src/app/shared/models/progress.model';
 import { Event } from 'src/app/shared/models/event.model';
@@ -405,6 +405,8 @@ export class ChatBodyComponent implements OnInit {
 
   @ViewChild('bottom', {static: false}) bottom: ElementRef;
 
+  @Input() name: string;
+
   public messages: Event[] = [];
   public currentEventKey = '0';
   public showFadeIn: boolean;
@@ -412,9 +414,7 @@ export class ChatBodyComponent implements OnInit {
   private progress: Progress;
   public currentEvent: Event;
 
-  constructor() {
-
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.progress = {
