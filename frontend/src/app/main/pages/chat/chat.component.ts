@@ -17,7 +17,7 @@ import { Progress } from 'src/app/shared/models/progress.model';
 export class ChatComponent implements OnInit {
   tempOptions: Option[];
 
-  members: Character[] = [];
+  members: {[name: string]: Character};
   story: Story;
   progress: Progress;
 
@@ -52,11 +52,16 @@ export class ChatComponent implements OnInit {
 
     this.storyService.getStory(storyId).subscribe(story => {
       this.story = story;
+      this.members = story.characters;
     });
 
     if (storyId) {
       this.storyService.openStory(storyId);
     }
+  }
+
+  updateMembers(members: {[name: string]: Character}) {
+    this.members = {...members};
   }
 
   @HostListener('window:popstate', ['$event'])
