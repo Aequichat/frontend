@@ -55,8 +55,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(username, password).subscribe(
       (user: User) => {
         this.isLoading = false;
-        this.authService.user = user;
-        localStorage.setItem('user', JSON.stringify(user));
+        this.authService.setUser(user);
         this.router.navigate(['/chats']);
       },
       (error: HttpErrorResponse) => {
@@ -77,6 +76,7 @@ export class LoginComponent implements OnInit {
       (response: any) => {
         this.toastr.success(response.message);
         this.isLoading = false;
+        localStorage.setItem('user', JSON.stringify(response.user));
         this.router.navigate(['/chats']);
       },
       (error: HttpErrorResponse) => {
