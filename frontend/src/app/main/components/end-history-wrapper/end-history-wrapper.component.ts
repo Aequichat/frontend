@@ -8,7 +8,6 @@ import { EndHistoryComponent } from '../../components/end-history/end-history.co
   styleUrls: ['./end-history-wrapper.component.scss']
 })
 export class EndHistoryWrapperComponent implements OnInit {
-
   @Input() emoji: string;
   @Input() color: string;
   @Input() message: string;
@@ -23,7 +22,7 @@ export class EndHistoryWrapperComponent implements OnInit {
         message: this.message
       },
       panelClass: 'end-story'
-    })
+    });
   }
 
 }
