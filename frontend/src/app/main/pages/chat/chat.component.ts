@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { Character } from 'src/app/shared/models/character.model';
 import { StoryService } from 'src/app/shared/services/story.service';
 
 @Component({
@@ -7,6 +8,8 @@ import { StoryService } from 'src/app/shared/services/story.service';
   styleUrls: ['./chat.component.scss']
 })
 export class ChatComponent implements OnInit {
+
+  members: Character[] = [];
 
   constructor(public storyService: StoryService) { }
 
