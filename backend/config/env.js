@@ -7,5 +7,9 @@ module.exports = {
     CORS_ORIGINS: [
         'http://localhost:4200',
         'https://aequichatglobhack.herokuapp.com/'
-    ]
+    ],
+    emailAuth: {
+        address: process.env.EMAIL_ADDRESS || 'jose42829@gmail.com',
+        password: process.env.EMAIL_PASSWORD || 'luakhdgrcwdfgqqd',
+    },
 };
