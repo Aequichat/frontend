@@ -61,7 +61,7 @@ export class ChatComponent implements OnInit {
   }
 
   updateMembers(members: {[name: string]: Character}) {
-    this.members = members;
+    this.members = {...members};
   }
 
   @HostListener('window:popstate', ['$event'])
