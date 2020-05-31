@@ -15,7 +15,6 @@ const corsOptions = {
     origin: config.CORS_ORIGINS
 };
 
-app.use(expressStaticGzip('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors(corsOptions));
@@ -24,5 +23,10 @@ app.use('/api', authRoutes);
 app.use('/api', userRoutes);
 app.use('/api', storyRoutes);
 app.use('/api', progressRoutes);
+
+app.use(expressStaticGzip('public'));
+app.get('*', function(req, res) {
+    res.sendFile(__dirname + '/public/index.html');
+});
 
 module.exports = app;
